@@ -52,7 +52,6 @@ INSTALLED_APPS = (
 
     'redactor',
     'south',
-    'slideshow',
     'comercios',
     'filer',
     'easy_thumbnails',

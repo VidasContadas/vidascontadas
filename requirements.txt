@@ -1,0 +1,5 @@
+django==1.6
+django-suit==0.2.5
+django-swingtime==0.3.beta.0
+django-wysiwyg-redactor==0.3.7
+South==0.8.2
