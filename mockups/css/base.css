@@ -1,0 +1,134 @@
+/*
+* {margin:0;padding:0;}
+
+a img { text-decoration: none;border:0;}
+*/
+
+body {
+	text-align: center;
+	background-color:#eceded;
+	font-family: 'Arvo', serif;
+}
+
+#wrapper {
+	padding-bottom:40px;
+}
+
+#topmenu {
+	display:block;
+	overflow:hidden;
+	background-color: white;
+	font-size:14px;
+	position:fixed;
+	top:0;
+}
+
+#topmenu .logo {
+	float:left;
+	text-align: center;
+}
+
+#topmenu .logo a {
+	margin:0 auto;
+}
+
+#topmenu .links {
+	background-color:#a5a91f;
+}
+
+#topmenu .right {
+	background-color:white;
+	display:block;
+}
+
+#topmenu .links a,#topmenu .right a {
+	color:white;
+	text-decoration: none;
+	float:left;
+	padding:20px;
+}
+
+#topmenu .right a {
+	color:#a5a91f;
+	margin:0 auto;
+	text-align: center;
+	padding:20px 0;
+}
+
+#topmenu .links a:hover,#topmenu .right a:hover {
+	text-decoration: underline;
+}
+
+#precontent .content {
+	text-align: left;
+	font-size: 17px;
+	line-height:20px;
+}
+
+#precontent .content span { 
+	color:#A5A91F;
+}
+
+#tabs a {
+	width:116px;
+	text-align: center;
+	padding:8px 0;
+	display:block;
+	float:right;
+	border-radius:10px 10px 0 0;
+	background-color: white;
+	color:black;
+	text-decoration: none;
+	font-size:14px;
+}
+
+
+.tab1 {background-color: #e53b3b!important}
+.tab2 {background-color: #76c7ec!important}
+.tab3 {background-color: #f0a500!important}
+.tab4 {background-color: #cc9966!important}
+.tab5 {background-color: #ea661e!important}
+.tab6 {background-color: #fbdb00!important}
+
+.home img {margin:100px auto;}
+
+#content h1 {
+	font-size:48px;
+}
+
+#content .left p {
+	font-size:17px;	
+	line-height: 20px;
+}
+
+#content .right p {
+	font-size:22px;	
+	line-height: 25px;
+}
+
+#content .tab {
+	border-radius:0 0 20px 20px;
+	display: none;
+}
+
+#content .home {
+	background-color: #9bc01e!important;
+	display:block;
+}
+
+#content .left {
+	text-align:left;
+}
+
+#content .right {
+	text-align:left;
+	color:white;
+}
+
+.clear.grid_12 {
+	height:48px;
+}
+
+.clear.grid_3,.clear.grid_1,.clear.grid_6 {
+	height:1px;
+}
