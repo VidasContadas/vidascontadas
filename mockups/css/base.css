@@ -19,9 +19,8 @@ body {
 	overflow:hidden;
 	background-color: white;
 	font-size:14px;
-	position:fixed;
-	top:0;
 }
+    .f-nav{ z-index: 9999; position: fixed; top: 0; }
 
 #topmenu .logo {
 	float:left;
@@ -33,7 +32,7 @@ body {
 }
 
 #topmenu .links {
-	background-color:#a5a91f;
+	background-color:#9bc01e;
 }
 
 #topmenu .right {
@@ -49,7 +48,7 @@ body {
 }
 
 #topmenu .right a {
-	color:#a5a91f;
+	color:#9bc01e;
 	margin:0 auto;
 	text-align: center;
 	padding:20px 0;
@@ -66,7 +65,7 @@ body {
 }
 
 #precontent .content span { 
-	color:#A5A91F;
+	color:#9bc01e;
 }
 
 #tabs a {
@@ -109,6 +108,7 @@ body {
 #content .tab {
 	border-radius:0 0 20px 20px;
 	display: none;
+	min-height: 776px; /* tamaños iguales ? */
 }
 
 #content .home {
@@ -126,7 +126,7 @@ body {
 }
 
 .clear.grid_12 {
-	height:48px;
+	height:20px; /* probablemente tenga que desaparacer */
 }
 
 .clear.grid_3,.clear.grid_1,.clear.grid_6 {

@@ -9,4 +9,15 @@ $(document).ready(function(){
 		e.preventDefault();
 	});
 
+    var nav = $('#topmenu');
+    
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 494) {
+            nav.addClass("f-nav");
+        } else {
+            nav.removeClass("f-nav");
+        }
+    });
+
 });
+
