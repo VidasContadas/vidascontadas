@@ -8,7 +8,10 @@ body {
 	text-align: center;
 	background-color:#eceded;
 	font-family: 'Arvo', serif;
+	background-image:url('../images/ticks.png');
+	background-repeat:repeat;
 }
+
 
 #wrapper {
 	padding-bottom:40px;
@@ -108,7 +111,7 @@ body {
 #content .tab {
 	border-radius:0 0 20px 20px;
 	display: none;
-	min-height: 776px; /* tamaños iguales ? */
+	height: 600px; /* tamaños iguales ? */
 }
 
 #content .home {
@@ -132,3 +135,14 @@ body {
 .clear.grid_3,.clear.grid_1,.clear.grid_6 {
 	height:1px;
 }
+
+.texto_blanco {
+    position: relative;
+    float:left;
+    height: 600px;
+    }
+    .texto_blanco p {
+        position: absolute;
+        bottom: 0;
+        margin-bottom: 80px;
+        }
