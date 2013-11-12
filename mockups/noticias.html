@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	
+	<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="js/base.js"></script>
+
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/960.css">
+	<link rel="stylesheet" href="css/text.css">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/slides.css">	
+	<link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+	
+</head>
+
+<body>
+	<div class="container_12" id="slides">
+	
+		<div class="grid_12 alpha omega">
+     
+			<div class="banner">
+                        <ul>
+                                <li style="background-image: url('https://raw.github.com/idiot/unslider/master/site/img/sunset.jpg');">
+                                        <div class="inner">
+                                                <h1>The jQuery slider that just slides.</h1>
+                                                <p>No fancy effects or unnecessary markup, and it’s less than 3kb.</p>
+
+                                                <a class="btn" href="#download">Download</a>
+                                        </div>
+                                </li>
+
+                                <li style="background-image: url('https://raw.github.com/idiot/unslider/master/site/img/wood.jpg');">
+                                        <div class="inner">
+                                                <h1>Fluid, flexible, fantastically minimal.</h1>
+                                                <p>Use any HTML in your slides, extend with CSS. You have full control.</p>
+
+                                                <a class="btn" href="#download">Download</a>
+                                        </div>
+                                </li>
+
+                                <li style="background-image: url('https://raw.github.com/idiot/unslider/master/site/img/subway.jpg');">
+                                        <div class="inner">
+                                                <h1>Open-source.</h1>
+                                                <p>Everything to do with Unslider is hosted on GitHub.</p>
+
+                                                <a class="btn" href="//github.com/idiot/unslider">Contribute</a>
+                                        </div>
+                                </li>
+
+                                <li style="background-image: url('https://raw.github.com/idiot/unslider/master/site/img/shop.jpg');">
+                                        <div class="inner">
+                                                <h1>Uh, that’s about it.</h1>
+                                                <p>I just wanted to show you another slide.</p>
+
+                                                <a class="btn" href="#download">Download</a>
+                                        </div>
+                                </li>
+                        </ul>
+            </div>
+		</div>
+	</div>
+	<div class="container_12" id="wrapper">
+
+		<div class="container_12" id="topmenu">
+			<a class="logo" href="#" class="grid_3" title="Home">
+				<img src="images/logo.jpg" alt="ensache área comercial logo"/>
+			</a>
+
+			<div class="grid_8 links">
+				<a href="#" title="¿Quienes somos?">¿Quiénes somos?</a>
+				<a href="#" title="Nuestros asociados">Nuestros asociados</a>
+				<a href="#" title="Noticias">Noticias</a>
+				<a href="#" title="Agenda">Agenda</a>
+				<a href="#" title="Contacto">Contacto</a>
+			</div>
+
+			<div class="grid_1 right">
+				<a href="#" class="grid_1" title="Usuarios">Usuarios</a>
+			</div>
+		</div>
+
+		<div class="clear grid_12"></div>
+		
+		<div class="container_12" id="news">
+
+
+			<div class="grid_6 main">			
+				<img src="images/noticia.png" alt="Noticia"/>
+
+				<h1>Participa en el concurso "El Centro De Tus Sueños"</h1>
+
+				<p>Por segundo año consecutivo Ensanche Área Comercial (Asociación de Empresarios del Comercio, Hostelería y Servicios del Ensanche de Pamplona) organiza, con la colaboración de Diario de Navarra, el concurso de escaparates de Navidad “El centro de tus sueños”, dirigido a comerciantes ubicados en la zona del Ensanche.De entre todos los participantes, el Jurado (compuesto por un responsable de marketing de Diario de Navarra, una profesional de las artes plásticas y un representante de la asociación del Ensanche) eligió 10 finalistas. Los ciudada-nos han votado a través de www.diariodenavarra.es el escaparate ganador:</p>
+			</div>
+
+			<div class="grid_3 other">			
+
+				<h2>OTRAS NOTICIAS</h2>
+
+				<p><a href="#">Balance Sanfermines</a>El transporte urbano de-scendió un 2,06% respecto al año pasado y la recogi-da de residuos supuso un 2,70% menos que durante las fiestas de...</p>
+
+				<p><a href="#">Horario TUC Verano</a>El cambio está motivado por el importante descen-so de viajeros que se experimenta durante estas fechas.</p>
+
+				<p><a href="#">Reciclar en Sanfermines</a>Una carpa en Conde de Rodezno permite jugar a la “Ruleta del reciclaje” durante los Sanfermines.</p>
+			</div>
+
+		</div>
+
+		<div class="clear grid_12"></div>
+
+	</div>
+
+				<script src="http://unslider.com/unslider.min.js"></script>
+                <script>
+
+
+                        $('.banner').unslider({
+                                arrows: true,
+                                fluid: true,
+                                dots: true
+                        });
+
+                        //  Find any element starting with a # in the URL
+                        //  And listen to any click events it fires
+                        $('a[href^="#"]').click(function() {
+                                //  Find the target element
+                                var target = $($(this).attr('href'));
+
+                                //  And get its position
+                                var pos = target.offset(); // fallback to scrolling to top || {left: 0, top: 0};
+
+                                //  jQuery will return false if there's no element
+                                //  and your code will throw errors if it tries to do .offset().left;
+                                if(pos) {
+                                        //  Scroll the page
+                                        $('html, body').animate({
+                                                scrollTop: pos.top,
+                                                scrollLeft: pos.left
+                                        }, 1000);
+                                }
+
+                                //  Don't let them visit the url, we'll scroll you there
+                                return false;
+                        });
+
+                </script>
+</body>
+
+</html>
