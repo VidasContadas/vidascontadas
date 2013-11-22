@@ -110,9 +110,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
+STATIC_ROOT = os.path.join(SITE_ROOT,"static")
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(SITE_ROOT,"media")
 MEDIA_URL = '/media/'
+
+STATICFILES_FINDERS = ("django.contrib.staticfiles.finders.FileSystemFinder",
+                        "django.contrib.staticfiles.finders.AppDirectoriesFinder")
+
+STATICFILES_DIRS = (
+    ('js',os.path.join(STATIC_ROOT,"js"),),
+    ('images',os.path.join(STATIC_ROOT,"images"),),
+    ('css',os.path.join(STATIC_ROOT,"css"),),
+)
 
 REDACTOR_OPTIONS = {'lang': 'es'}
 REDACTOR_UPLOAD = 'uploads/'
@@ -129,5 +139,6 @@ try:
     from local_settings import *
 except:
     pass
+
 
 TEMPLATE_DEBUG = DEBUG
