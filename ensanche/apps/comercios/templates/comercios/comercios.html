@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{%load staticfiles thumbnail%}
+
+{%block extra_haed%}
+<script type="text/javascript" src="http://isotope.metafizzy.co/jquery.isotope.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	var $container = $("#comercios");
+	$("#categories a").click(function(){
+	    var $this = $(this);
+	    // don't proceed if already selected
+	    if ( $this.hasClass('selected') ) {
+	      return false;
+	    }
+
+	    $('.selected').removeClass('selected');
+	    $this.addClass('selected');
+
+	    // make option object dynamically, i.e. { filter: '.my-filter-class' }
+	    var options = {};
+
+	    options[ 'filter' ] = $this.attr("data-option-value");
+
+		$container.isotope( options );
+	    
+	    return false;
+  });
+});
+</script>
+{%endblock%}
+
+{%block content %}
+		<div class="container_12" id="news">
+
+			<div id="categories">
+				<ul>
+					<li>
+						<a href="javascript:void(0)" data-option-value='*' class="selected">mostrar todo</a>
+					</li>
+					{%for c in categorias%}
+					<li>
+						<a href="javascript:void(0)" data-option-value=".{{c.slug}}">{{c}}</a>
+					</li>
+					{%endfor%}
+				</ul>
+			</div>
+
+			<div class="clear grid_12"></div>
+
+			<div id="comercios" class="container_12">
+				{%for n in comercios%}
+				<div class="grid_3 list {%for c in n.categorias.all%}{{c.slug}} {%endfor%}">			
+					<a href="{{n.get_absolute_url}}"><img src="{% thumbnail n.imagen 220x220 crop %}" alt="{{n}}"/></a>
+
+					<span class="date">{{n.fecha|date}}</span>
+
+					<a href="{{n.get_absolute_url}}" class="title">{{n}}</a>
+
+					<p>{{n.resumen}}</p>
+				</div>
+				{%endfor%}
+			</div>
+
+		</div>
+
+		<div class="clear grid_12"></div>
+{%endblock%}

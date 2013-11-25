@@ -135,6 +135,8 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters',
 )
 
+DATE_FORMAT = "d/m/Y"
+
 try:
     from local_settings import *
 except:

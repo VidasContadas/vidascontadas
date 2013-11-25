@@ -6,5 +6,6 @@ admin.autodiscover()
 urlpatterns = patterns('comercios.views',
     url(r'^$', "home",name="home"),
     url(r'^noticias/$', "news",name="noticias"),
-    url(r'^noticias/(?P<slug>[\w\-_]+)/$', "news",name="noticia"),
+    url(r'^comercios/$', "comercios",name="comercios"),
+    url(r'^noticias/(?P<year>\d+)/(?P<month>\d+)/(?P<slug>[\w\-_]+)/$', "news",name="noticia"),
 )

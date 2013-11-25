@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="{{STATIC_URL}}css/slides.css">	
 	<link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 
+    {%block extra_haed%}{%endblock%}
 	
 </head>
 
@@ -76,13 +77,13 @@
 			<div class="grid_8 links">
 				<a href="#" title="¿Quienes somos?">¿Quiénes somos?</a>
 				<a href="#" title="Nuestros asociados">Nuestros asociados</a>
-				<a href="#" title="Noticias">Noticias</a>
+				<a href="{% url "noticias" %}"" title="Noticias">Noticias</a>
 				<a href="#" title="Agenda">Agenda</a>
 				<a href="#" title="Contacto">Contacto</a>
 			</div>
 
 			<div class="grid_1 right">
-				<a href="#" class="grid_1" title="Usuarios">Usuarios</a>
+				<a href="{% url "admin:index" %}" target="_blank" class="grid_1" title="Usuarios">Usuarios</a>
 			</div>
 		</div>
 

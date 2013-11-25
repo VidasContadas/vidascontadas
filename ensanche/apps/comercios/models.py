@@ -13,11 +13,32 @@ class Marca(models.Model):
 	def __unicode__(self):
 		return self.nombre
 
-	verbose_name = "marca"
+class Categoria(models.Model):
+	nombre = models.CharField(max_length=255,unique=True)
+	slug = models.SlugField(unique=True)
+
+	@classmethod
+	def get_list(cls):
+		return cls.objects.exclude(comercios=None)
+
+	def __unicode__(self):
+		return self.nombre
+
+	def save(self,*args,**kwargs):
+
+		self.slug = slugify(self.nombre)
+
+		super(Categoria,self).save(*args,**kwargs)
+
+	class Meta:
+		ordering = ('nombre',)
+
+
 
 class Comercio(LogicalDeletableModel):
 	nombre = models.CharField(max_length=255,unique=True)
 	slug = models.SlugField("URL",blank=True,unique=True,help_text=u"Si lo deja en blanco se generará a partir del nombre")
+	categorias = models.ManyToManyField(Categoria,blank=False,related_name="comercios")
 	presentacion = RedactorField()
 	#imagen = FilerImageField("Imagen principal",help_text="Usada para representar al comercio en miniaturas, etc")
 	imagen = FilerImageField()
@@ -29,6 +50,10 @@ class Comercio(LogicalDeletableModel):
 	googleplus_url = models.URLField(u"Dirección de Google+",blank=True,null=True)
 	tuenti_url = models.URLField(u"Dirección de Tuenti",blank=True,null=True)
 	instagram_url = models.URLField(u"Dirección de Instagram",blank=True,null=True)
+
+	@classmethod
+	def get_list(cls,exclude=None):
+		return cls.objects.all()
 
 	def save(self,*args,**kwargs):
 
@@ -72,15 +97,38 @@ class Oferta(LogicalDeletableModel):
 		ordering = ('titulo',)
 
 class Noticia(LogicalDeletableModel):
-	comercio = models.ForeignKey(Comercio,related_name="noticias",)
+	#comercio = models.ForeignKey(Comercio,related_name="noticias",)
 	fecha = models.DateField()
+	slug = models.SlugField()
 	titulo = models.CharField(max_length=255)
 	imagen = FilerImageField()
 	texto = RedactorField()
+	resumen = models.TextField(help_text=u"Pequeño resumen de la noticia para mostrar en los listados")
+	visible = models.BooleanField(default=False)
+
+	@classmethod
+	def get_list(cls,exclude=None):
+		qs = cls.objects.filter(visible=True)
+
+		if exclude:
+			qs = qs.exclude(id=exclude.id)
+
+		return qs
 
 	def __unicode__(self):
 		return self.titulo
 
+	@models.permalink
+	def get_absolute_url(self):
+		return ('noticia', (), {'year':self.fecha.year,'month':self.fecha.month, 'slug': self.slug,})
+
+	def save(self,*args,**kwargs):
+
+		self.slug = slugify(self.titulo)
+
+		super(Noticia,self).save(*args,**kwargs)
+
+
 	class Meta:
 		verbose_name = "noticia"
-		ordering = ('titulo',)
+		ordering = ('-fecha','titulo',)

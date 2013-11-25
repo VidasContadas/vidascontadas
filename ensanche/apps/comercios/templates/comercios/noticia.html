@@ -1,29 +1,30 @@
 {% extends "base.html" %}
 
-{%load staticfiles%}
+{%load staticfiles thumbnail%}
 
 {%block content %}
 		<div class="container_12" id="news">
 
-
 			<div class="grid_6 main">			
-				<img src="{%static "images/noticia.png"%} " alt="Noticia"/>
+				<a href="{{noticia.get_absolute_url}}"><img src="{% thumbnail noticia.imagen 460x460 crop %}" alt="{{noticia}}"/></a>
 
-				<h1>Participa en el concurso "El Centro De Tus Sueños"</h1>
+				<span class="date">{{noticia.fecha|date}}</span>
 
-				<p>Por segundo año consecutivo Ensanche Área Comercial (Asociación de Empresarios del Comercio, Hostelería y Servicios del Ensanche de Pamplona) organiza, con la colaboración de Diario de Navarra, el concurso de escaparates de Navidad “El centro de tus sueños”, dirigido a comerciantes ubicados en la zona del Ensanche.De entre todos los participantes, el Jurado (compuesto por un responsable de marketing de Diario de Navarra, una profesional de las artes plásticas y un representante de la asociación del Ensanche) eligió 10 finalistas. Los ciudada-nos han votado a través de www.diariodenavarra.es el escaparate ganador:</p>
+				<h1>{{noticia}}</h1>
+
+				<p>{{noticia.texto|safe}}</p>
 			</div>
 
+			{% if otras%}
 			<div class="grid_3 other">			
 
 				<h2>OTRAS NOTICIAS</h2>
 
-				<p><a href="#">Balance Sanfermines</a>El transporte urbano de-scendió un 2,06% respecto al año pasado y la recogi-da de residuos supuso un 2,70% menos que durante las fiestas de...</p>
-
-				<p><a href="#">Horario TUC Verano</a>El cambio está motivado por el importante descen-so de viajeros que se experimenta durante estas fechas.</p>
-
-				<p><a href="#">Reciclar en Sanfermines</a>Una carpa en Conde de Rodezno permite jugar a la “Ruleta del reciclaje” durante los Sanfermines.</p>
+				{% for n in otras%}
+				<p><span class="date">{{n.fecha|date}}</span><a href="{{n.get_absolute_url}}">{{n}}</a>{{n.resumen}}</p>
+				{%endfor%}
 			</div>
+			{%endif%}
 
 		</div>
 

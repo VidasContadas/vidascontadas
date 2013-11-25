@@ -171,8 +171,21 @@ body {
 
 #news .list a.title {
 	padding:0 10px;
-	margin-top: 20px;
 }
+
+
+#news .date {
+	color:lightgray;
+	text-align: right;
+	font-size:0.9em;
+	text-decoration: none;
+	display:block;
+	font-weight: normal;
+	font-style: italic;
+	padding:0 10px;
+	margin-top:5px;
+}
+
 
 #news .other a:hover,#news .list a:hover {
 	text-decoration: underline;
@@ -204,6 +217,98 @@ body {
 #news p {
 	font-size:14px;
 	padding:0 10px;
+}
+
+#categories {
+	overflow: hidden;
+	display: block;
+	clear: both;
+}
+
+#categories ul {
+	margin: 0;
+	list-style: none;
+}
+
+#categories li {
+	float: left;
+	margin-bottom: 0.2em;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+#categories li a {
+	display: block;
+	padding: 0.4em 0.5em;
+	background-color: #eee;
+	color: #222;
+	font-weight: bold;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.5 );
+	background-image: -webkit-linear-gradient( top, rgba(255, 255, 255, 0.5 ), rgba(255, 255, 255, 0.0 ) );
+	background-image: -moz-linear-gradient( top, rgba(255, 255, 255, 0.5 ), rgba(255, 255, 255, 0.0 ) );
+	background-image: -ms-linear-gradient( top, rgba(255, 255, 255, 0.5 ), rgba(255, 255, 255, 0.0 ) );
+	background-image: -o-linear-gradient( top, rgba(255, 255, 255, 0.5 ), rgba(255, 255, 255, 0.0 ) );
+	background-image: linear-gradient( top, rgba(255, 255, 255, 0.5 ), rgba(255, 255, 255, 0.0 ) );
+	border-left: 1px solid rgba(255, 255, 255, 0.3 );
+	border-right: 1px solid rgba(0, 0, 0, 0.2 );
+	text-decoration: none;
+}
+
+#categories li:first-child a {
+	border-radius: 7px 0 0 7px;
+	border-left: none;
+}
+
+#categories li:last-child a {
+	border-radius: 0 7px 7px 0;
+}
+
+#categories li a:hover {
+	background-color: #d4e49e;
+}
+
+
+#categories li a.selected {
+	background-color: #9bc01e;
+}
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+.isotope,
+.isotope .isotope-item {
+  /* change duration value to whatever you like */
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
 }
 
 

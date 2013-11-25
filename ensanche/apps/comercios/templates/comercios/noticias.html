@@ -1,66 +1,22 @@
 {% extends "base.html" %}
 
-{%load staticfiles%}
+{%load staticfiles thumbnail%}
 
 {%block content %}
 		<div class="container_12" id="news">
 
 
+			{%for n in noticias%}
 			<div class="grid_3 list">			
-				<a href="#"><img src="{%static "images/noticia.png"%} " alt="Noticia"/></a>
+				<a href="{{n.get_absolute_url}}"><img src="{% thumbnail n.imagen 220x220 crop %}" alt="{{n}}"/></a>
 
-				<a href="#" class="title">Participa en el concurso "El Centro De Tus Sueños"</a>
+				<span class="date">{{n.fecha|date}}</span>
 
-				<p>Por segundo año consecutivo Ensanche Área Comercial (Asociación de Empresarios del Comercio, Hostelería y Servicios del Ensanche de Pamplona) organiza, con la colaboración de Diario de Navarra...</p>
+				<a href="{{n.get_absolute_url}}" class="title">{{n}}</a>
+
+				<p>{{n.resumen}}</p>
 			</div>
-
-			<div class="grid_3 list">			
-				<a href="#"><img src="{%static "images/noticia.png"%} " alt="Noticia"/></a>
-
-				<a href="#" class="title">Participa en el concurso "El Centro De Tus Sueños"</a>
-
-				<p>Por segundo año consecutivo Ensanche Área Comercial (Asociación de Empresarios del Comercio, Hostelería y Servicios del Ensanche de Pamplona) organiza, con la colaboración de Diario de Navarra...</p>
-			</div>
-
-			<div class="grid_3 list">			
-				<a href="#"><img src="{%static "images/noticia.png"%} " alt="Noticia"/></a>
-
-				<a href="#" class="title">Participa en el concurso "El Centro De Tus Sueños"</a>
-
-				<p>Por segundo año consecutivo Ensanche Área Comercial (Asociación de Empresarios del Comercio, Hostelería y Servicios del Ensanche de Pamplona) organiza, con la colaboración de Diario de Navarra...</p>
-			</div>
-
-			<div class="grid_3 list">			
-				<a href="#"><img src="{%static "images/noticia.png"%} " alt="Noticia"/></a>
-
-				<a href="#" class="title">Participa en el concurso "El Centro De Tus Sueños"</a>
-
-				<p>Por segundo año consecutivo Ensanche Área Comercial (Asociación de Empresarios del Comercio, Hostelería y Servicios del Ensanche de Pamplona) organiza, con la colaboración de Diario de Navarra...</p>
-			</div>
-
-			<div class="grid_3 list">			
-				<a href="#"><img src="{%static "images/noticia.png"%} " alt="Noticia"/></a>
-
-				<a href="#" class="title">Participa en el concurso "El Centro De Tus Sueños"</a>
-
-				<p>Por segundo año consecutivo Ensanche Área Comercial (Asociación de Empresarios del Comercio, Hostelería y Servicios del Ensanche de Pamplona) organiza, con la colaboración de Diario de Navarra...</p>
-			</div>
-
-			<div class="grid_3 list">			
-				<a href="#"><img src="{%static "images/noticia.png"%} " alt="Noticia"/></a>
-
-				<a href="#" class="title">Participa en el concurso "El Centro De Tus Sueños"</a>
-
-				<p>Por segundo año consecutivo Ensanche Área Comercial (Asociación de Empresarios del Comercio, Hostelería y Servicios del Ensanche de Pamplona) organiza, con la colaboración de Diario de Navarra...</p>
-			</div>
-
-			<div class="grid_3 list">			
-				<a href="#"><img src="{%static "images/noticia.png"%} " alt="Noticia"/></a>
-
-				<a href="#" class="title">Participa en el concurso "El Centro De Tus Sueños"</a>
-
-				<p>Por segundo año consecutivo Ensanche Área Comercial (Asociación de Empresarios del Comercio, Hostelería y Servicios del Ensanche de Pamplona) organiza, con la colaboración de Diario de Navarra...</p>
-			</div>
+			{%endfor%}
 
 		</div>
 
