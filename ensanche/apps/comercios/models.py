@@ -132,3 +132,43 @@ class Noticia(LogicalDeletableModel):
 	class Meta:
 		verbose_name = "noticia"
 		ordering = ('-fecha','titulo',)
+
+
+class Evento(LogicalDeletableModel):
+	titulo = models.CharField(max_length=255)
+	slug = models.SlugField()
+	imagen = FilerImageField()
+	descripcion = models.TextField()
+	direccion = models.CharField(max_length=1024)
+	fecha_inicio = models.DateField()
+	fecha_fin = models.DateField(blank=True,null=True)
+	hora_inicio = models.TimeField(blank=True,null=True)
+	hora_fin = models.TimeField(blank=True,null=True)
+	visible = models.BooleanField(default=True)
+
+	@classmethod
+	def get_list(cls,exclude=None):
+		qs = cls.objects.filter(visible=True)
+
+		if exclude:
+			qs = qs.exclude(id=exclude.id)
+
+		return qs
+
+	@models.permalink
+	def get_absolute_url(self):
+		return ('evento', (), {'year':self.fecha_inicio.year,'slug': self.slug,})
+
+	def __unicode__(self):
+		return self.titulo
+
+	def save(self,*args,**kwargs):
+
+		self.slug = slugify(self.titulo)
+
+		super(Evento,self).save(*args,**kwargs)
+
+
+	class Meta:
+		verbose_name = "evento"
+		ordering = ('-fecha_inicio','-hora_inicio','titulo',)

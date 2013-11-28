@@ -19,6 +19,20 @@ def news(request,year=None,month=None,slug=None):
 
 	return render_to_response("comercios/noticia.html",dict(noticia=noticia,otras=otras),context_instance=RequestContext(request))
 
+def events(request,year=None,slug=None):
+
+	if not slug:
+
+		eventos = Evento.get_list()
+
+		return render_to_response("comercios/eventos.html",dict(eventos=eventos),context_instance=RequestContext(request))
+
+	evento = get_object_or_404(Evento,fecha_inicio__year=year,slug=slug)
+	otras = Evento.get_list(exclude=evento)
+
+	return render_to_response("comercios/evento.html",dict(evento=evento,otras=otras),context_instance=RequestContext(request))
+
+
 def comercios(request,year=None,month=None,slug=None):
 
 	if not slug:

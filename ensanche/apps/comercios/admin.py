@@ -24,6 +24,11 @@ class Noticia(LogicalDeletableAdmin):
     list_filter = ('deleted','visible')
     list_display=("__unicode__","visible")
 
+class Evento(LogicalDeletableAdmin):
+    exclude = ('date_created','date_modified','date_removed','deleted',"slug")
+    list_filter = ('deleted','visible')
+    list_display=("__unicode__","visible")
+
 class Oferta(LogicalDeletableAdmin):
 	pass
 
@@ -36,5 +41,6 @@ admin.site.register(models.Comercio,Comercio)
 admin.site.register(models.Noticia,Noticia)
 admin.site.register(models.Oferta,Oferta)
 admin.site.register(models.Categoria,Categoria)
+admin.site.register(models.Evento,Evento)
 
 

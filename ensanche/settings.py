@@ -55,7 +55,6 @@ INSTALLED_APPS = (
     'comercios',
     'filer',
     'easy_thumbnails',
-    'swingtime',
     'minicms',
 )
 
@@ -136,6 +135,7 @@ THUMBNAIL_PROCESSORS = (
 )
 
 DATE_FORMAT = "d/m/Y"
+TIME_FORMAT = "H:i"
 
 try:
     from local_settings import *
