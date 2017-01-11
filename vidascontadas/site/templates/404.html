@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block main %}                
+
+<!-- Static page 1 -->
+<section class="static-page">
+<div class="container">
+<div class="row">
+
+<div class="span12">
+<p class="lead"><br/></p>
+<h1>La página no existe</h1>
+</div>
+
+</div>
+
+
+</div>
+</section>  
+
+{% endblock %}
+
+{% block extra_javascript %}
+<script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
+<script>$.endlessPaginate({
+            paginateOnScroll: true,
+            paginateOnScrollMargin: 100
+            });
+</script>
+{% endblock %}

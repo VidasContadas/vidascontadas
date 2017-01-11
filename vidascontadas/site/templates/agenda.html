@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block main %}                
+
+<!-- Static page 1 -->
+<section class="static_page_1">
+
+{% block slider %}          
+{% endblock %}
+
+<div class="container">
+<div class="row">
+<div class="span12">
+
+<h1>Seguimos trabajando</h1>
+
+</div>
+</div>
+</section>    
+<!-- End Static page 1 -->       
+
+{% endblock %}
+
+{% block extra_javascript %}
+<script>
+            $('#menu a').click(function(e){
+             e.preventDefault();
+             hideContentDivs();             
+             var myIndex = $(this).parent().prevAll().length + 1;
+             
+             $('.content').eq(myIndex).show();
+             /*
+             $('#menu a').css("background-color", "#fbfbf9");
+             $('#menu a').css("color", "#797d7b");             
+             $(this).css("background-color", "#1abc9c");
+             $(this).css("color", "#fff");             
+             */
+             });
+
+            function hideContentDivs(){
+                $('.content').each(function(){
+                $(this).hide();});
+            }
+            hideContentDivs();
+            $('.content').eq(0).show();
+</script>
+{% endblock %}

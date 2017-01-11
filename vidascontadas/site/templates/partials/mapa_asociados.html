@@ -1,0 +1,58 @@
+<script type="text/javascript" id="googlemaps">
+
+  function initMap() {
+
+    var map;
+    var image = '/static/img/map-marker.png';
+
+    var mapDiv = document.getElementById('map-canvas');
+    map = new google.maps.Map(mapDiv, {
+      center: new google.maps.LatLng(42.813161, -1.639303),
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var styleArray = [
+  {
+    "featureType": "poi",
+    "elementType": "labels",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+  }
+    ];
+
+    map.setOptions({styles: styleArray});
+    
+    {% for asociado in asociados %}
+        var point = new google.maps.LatLng({{asociado.location.latitude|floatformat:".5f"}},{{asociado.location.longitude|floatformat:".5f"}});
+            
+            var marker = new google.maps.Marker({
+            position: point,
+            map: map,
+            icon: image, 
+           title: '{{ mark.id }}',
+        });
+
+        /*
+            marker['infowindow']  = new google.maps.InfoWindow({
+                     content: "<h3>{{asociado.nombre}}</h3> <br/> {{ asociado.direccion }}",
+            });
+
+            google.maps.event.addListener(marker, 'click', function() {
+                 this['infowindow'].open(map, this);
+            });
+           google.maps.event.addListener(marker, 'mouseover', function() {
+                    });
+           google.maps.event.addListener(marker, 'mouseout', function() {
+            });
+        */
+      {% endfor %}    
+
+  }
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1fqPCRXitBy3iFzc6hMAuB1WKLpN08vA&callback=initMap" async defer>
+    
+</script>

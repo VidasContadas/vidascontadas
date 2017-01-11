@@ -1,0 +1,52 @@
+{% extends "static_page.html" %}
+{% block title %}
+<title>{{titulo}}</title>
+{% endblock %}
+
+
+{% block jquery %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+{% endblock %}
+
+{% block jquery_ui %}
+{% endblock %}
+
+{% block css %}
+{{ block.super }}
+    <link href="/static/cicu/css/jquery.Jcrop.min.css" type="text/css" media="all" rel="stylesheet" />
+    <link href="/static/cicu/css/cicu-widget.css" type="text/css" media="all" rel="stylesheet" />
+    <link href="/static/redactor/css/redactor.css" type="text/css" media="all" rel="stylesheet" />
+    <link href="/static/redactor/css/django_admin.css" type="text/css" media="all" rel="stylesheet" />
+
+    <style>
+        .wpcf7-form .redactor_box{ max-width: none; }
+    </style>
+
+{% endblock %}
+
+{% block extrahead %}
+    <script type="text/javascript" src="/static/cicu/js/jquery.Jcrop.min.js"></script>
+    <script type="text/javascript" src="/static/cicu/js/jquery.iframe-transport.js"></script>
+    <script type="text/javascript" src="/static/cicu/js/cicu-widget.js"></script>
+    <script type="text/javascript" src="/static/redactor/jquery.redactor.init.js"></script>
+    <script type="text/javascript" src="/static/redactor/redactor.js"></script>
+    <script type="text/javascript" src="/static/redactor/langs/es.js"></script>
+{% endblock %}
+
+{% block content %} 
+
+<form id="testFormCicu" action="" class="wpcf7-form" method="POST">
+{% csrf_token %}
+{{ form.as_table }}
+
+<div class="box-footer">
+<input id="submit" type="submit" value="Guardar" class="btn btn-primary pull-right">
+<input id="cancel" type="cancel" value="Cancelar" class="btn"  onclick="history.go(-1);">
+</div>
+
+</form>
+
+{% endblock %}
+
+{% block javascript %} 
+{% endblock %}

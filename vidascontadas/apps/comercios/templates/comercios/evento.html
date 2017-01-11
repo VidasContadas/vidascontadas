@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{%load staticfiles thumbnail%}
+
+{%block content %}
+		<div class="container_12" id="events">
+
+			<div class="grid_6 main">			
+				<a href="{{evento.get_absolute_url}}"><img src="{% thumbnail evento.imagen 460x460 crop %}" alt="{{evento}}"/></a>
+
+				<h1>{{evento}}</h1>
+
+				<p class="date1">Inicio: <strong>{{evento.fecha_inicio|date}} {{evento.hora_inicio|time}}</strong></p>
+
+				{% if evento.fecha_fin%}
+				<p class="date2">Fin: <strong>{{evento.fecha_fin|date}} {{evento.hora_fin|time}}</strong></p>
+				{%endif%}
+
+				<p>{{evento.descripcion|safe}}</p>
+			</div>
+
+			{% if otras%}
+			<div class="grid_3 other">			
+
+				<h2>OTROS EVENTOS</h2>
+
+				{% for n in otras%}
+				<p><span class="date">{{n.fecha|date}}</span><a href="{{n.get_absolute_url}}">{{n}}</a>{{n.resumen}}</p>
+				{%endfor%}
+			</div>
+			{%endif%}
+
+		</div>
+
+		<div class="clear grid_12"></div>
+{%endblock%}

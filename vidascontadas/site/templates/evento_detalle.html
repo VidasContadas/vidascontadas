@@ -1,0 +1,39 @@
+{% load thumbnail %}
+{% thumbnail evento.imagen 400x300 crop="smart" as thumb %}
+
+<article class="post post-grid">
+    <div class="box">
+        <div class="box-image">
+            <a href="{% url 'asociacion.views.evento_fijo' evento.slug %}">
+                <img src="{{ thumb.url }}" alt="{{ evento.titulo }}" title="{{ evento.titulo }}" />
+            </a>
+        </div>
+        <div class="box-header">
+          <h3>
+            <a href="{% url 'asociacion.views.evento_fijo' evento.slug %}">{{ evento.titulo }}</a>
+          </h3>
+          <!--
+          <ul class="post-meta">
+
+            
+            <li><i class="icon-map-marker"></i> &nbsp; {{ evento.lugar }}</li><br/>
+            <li><i class="icon-calendar"></i> &nbsp; {{ evento.pretty_date }}</li>            
+            <li><i class="icon-comment-alt"></i> &nbsp; 3 comments</li>
+
+          </ul>
+          -->
+        </div>
+        
+        <div class="box-content alto-180">
+        {{ evento.texto|safe }}
+        </div>
+        
+        <div class="box-footer">
+            <div class="pull-right">
+                <a class="btn btn-small" href="{% url 'asociacion.views.evento_fijo' evento.slug %}" title="">
+                    Más info &nbsp; <i class="icon-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</article>

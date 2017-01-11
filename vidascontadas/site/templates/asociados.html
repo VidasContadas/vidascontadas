@@ -1,0 +1,144 @@
+{% extends "layout.html" %}
+
+{% load pagination_tags %}
+
+{% block main %}    
+
+<section class="static_page_1">
+<div class="container">
+
+<div class="row">
+
+<div class="span12">
+<section class="static-page">
+<div id="banner">
+{% include "partials/banner_img.html" %}
+</div>
+<div class="row">
+
+<div class="span9" id="panel_asociados">
+
+    
+    <div class="content">
+        <h1>{{categoria.name}}</h1>
+        <div id="map-canvas" style="height: 400px;margin-bottom:50px;"></div>
+        {% include "partials/googlemaps.html" %}
+
+        {% for asociado in asociados|dictsort:"nombre" %}
+        <div>
+        {% if asociado.microsite.count %}
+            <h4><a href="/comercios/{{asociado.microsite.all.0.slug}}">{{asociado.nombre}}</a></h4> 
+        {% else %}
+           <h4>{{asociado.nombre}}</h4>   
+        {% endif%}
+            <h6><em class="icon-map-marker"></em>&nbsp; {{asociado.direccion}}</h6>
+            <h6>
+            {% for cat in asociado.categorias.all %}
+            <small><em class="icon-tag"></em> &nbsp; {{cat.name|lower}} </small>
+            {% endfor %}
+            </h6><hr />
+        </div>
+        {% endfor %}
+        
+    </div>
+</div>
+
+<div class="span3">
+
+<div class="widget Menu">
+    <img src="/static/img/pin_asociados.png" width="100%">
+    <hr>
+    <!--h3 class="widget-title widget-title ">Categorías</h3-->
+
+    <ul class='menu-widget'>
+        {% for cat in categorias %}
+        {% if cat.parent == None %}
+
+        {% if cat.children.count %}
+        <li class="level1 menu-item-has-children"><a href="/asociados/{{ cat.slug }}/" title="{{cat.name}}" class="title">{{cat.name|upper}} </a>
+
+        {% if cat.slug == categoria.parent.slug %}            
+        <ul class="sub-menu active">
+        {% else %}
+        <ul class="sub-menu">
+        {% endif %} 
+
+        {% for child in cat.children.all|dictsort:"slug" %}
+            {% if child.slug == categoria.slug %}
+                <li class="level2 menu-item-no-children selected"><a href="/asociados/{{ cat.slug }}/{{ child.slug }}" >{{ child.name|upper }}</a></li>
+            {% else %}
+            <li class="level2 menu-item-no-children"><a href="/asociados/{{ cat.slug }}/{{ child.slug }}" >{{ child.name|upper }}</a></li>
+            {% endif %}            
+        {% endfor %}
+        </ul>   
+        {% else %}
+        <li class="level1 menu-item-no-children"><a href="/asociados/{{ cat.slug }}/" title="{{cat.name}}" class="title">{{cat.name|upper}} </a>
+        {% endif %}     
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+</div>
+</div>
+</div>
+
+</section>    
+
+{% endblock %} 
+
+{% block extra_javascript %}
+
+<script>
+$(document).ready(function() {
+
+    $(".sub-menu").css("display", "none");
+    $(".active").css("display", "block");
+    /*
+    $('.menu-widget a').click(function(){
+    event.preventDefault();
+    });
+    */
+
+    $(".menu-item-has-children > a").click(function (event) {
+        event.preventDefault(event);
+        var $block = $(this).parent().find(".sub-menu");
+        $block.toggle();        
+    });
+
+    /*
+    $(".menu-item-no-children > a").click(function (event) {
+        event.preventDefault(event);
+        $.get($(this).attr('href'), function(data){
+
+            $('#panel_asociados').html($(data).find('#panel_asociados').html());
+            $('#banner').html($(data).find('#banner').html());
+
+            var dom = $(data);
+
+            dom.filter('#googlemaps').each(function(){
+                console.log( this.text );
+                $.globalEval(this.text || this.textContent || this.innerHTML || '');
+            });
+            initialize();
+            //Find all inline script tags in the new content and loop through them
+            //eval(document.getElementById("googlemaps").innerHTML);
+            
+            $('html, body').animate({
+                scrollTop: $('#panel_asociados').offset().top
+            }, 'slow');
+        });
+    
+    });
+    */
+});
+</script>
+
+{% endblock %}

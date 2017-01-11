@@ -1,0 +1,35 @@
+<script>
+
+var map;
+var image = '/static/img/map-marker.png';
+
+function initMap() {
+
+  {% for local in comercio.locales.all %}
+    
+    {% if forloop.first %}
+
+    mapDiv = document.getElementById('mapa-{{comercio.id}}');
+    map = new google.maps.Map(mapDiv, {
+      center: new google.maps.LatLng({{local.localizacion.latitude|floatformat:".5f"}},{{local.localizacion.longitude|floatformat:".5f"}}),
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    mapDiv.map = map;
+    {% endif %}
+
+    marker = new google.maps.Marker({
+            position: new google.maps.LatLng({{local.localizacion.latitude|floatformat:".5f"}},{{local.localizacion.longitude|floatformat:".5f"}}),
+            map: map,
+            icon: image, 
+            title: '{{ local.nombre }}',
+    });
+    
+    {% endfor %}  
+
+}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1fqPCRXitBy3iFzc6hMAuB1WKLpN08vA&callback=initMap" async defer>
+    
+</script>

@@ -1,0 +1,10 @@
+{% if categoria and not categoria.parent %}
+<div class="banner span12" style="background-image:url('/media/categorias/{{ categoria.slug }}.png');">
+</div>
+{% elif categoria.parent%}
+<div class="banner span12" style="background-image:url('/media/categorias/{{ categoria.parent.slug }}.png');">
+</div>
+{% else %}
+<div class="banner span12" style="background-image:url('/media/categorias/moda-y-complementos.png');">
+</div>
+{% endif %}

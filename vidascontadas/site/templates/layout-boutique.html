@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+
+{% block layout %}
+<div class="wrapper">
+
+{% block header %}
+<!-- Header -->
+<div class="header">
+    <!-- Top bar -->
+    {% block topbar %}
+    <div class="top">
+        
+        <div class="container">
+            <div class="row">
+                <div class="span6">
+                    <p>
+                        Responsive eCommerce template &mdash; <a href="http://themeforest.net/item/la-boutique-responsive-ecommerce-template/5573130?WT.ac=portfolio_item&WT.seg_1=portfolio_item&WT.z_author=Tfingi"><strong>BUY NOW!</strong></a>
+                    </p>
+                </div>
+                <div class="span6 hidden-phone">
+                    <ul class="inline pull-right">
+                        <li>
+                            <a href="login-register.html" title="Login / Register">Login / Register</a>                                 
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>        
+    </div>
+    {% endblock topbar %}
+    <!-- End class="top" -->
+    {% block bottom %}
+    <!-- Logo & Search bar -->
+    <div class="bottom">
+        
+        <div class="container">
+            <div class="row">
+                <div class="span8">                         
+                    <div class="logo">
+                        <a href="/" title="&larr; Ensanche Pamplona">
+                            <!--img src="/static/img/logo_ensanche.png" alt="Ensanche Pamplona" /-->
+                            <img src="/static/img/logo-vidascontadas.png" alt="VidasContadas" />
+                        </a>
+                    </div>
+                </div>
+
+                {% block buscar %}
+                <div class="span4">
+                    <div class="row-fluid">
+                        <div class="span10">
+                                                        
+                            <div class="search">
+                                <div class="qs_s">
+
+                                    <form method="post" action="/buscador/">
+                                        {% csrf_token %}
+                                        <input type="text" name="query" id="query" placeholder="Buscar&hellip;" autocomplete="off" value="">
+                                    </form>
+                                    
+                                </div>
+                            </div>
+
+                            <!-- Autocomplete results -->
+                        </div>
+
+                        <!-- cesta
+                        <div class="span2">                            
+                            <div class="mini-cart">
+                                <a href="cart.html" title="Go to cart &rarr;">
+                                    <span>3</span>
+                                </a>                                    
+                            </div>                            
+                        </div>
+                        -->
+
+                    </div>
+                </div>
+                {% endblock buscar %}
+
+            </div>
+        </div>
+        
+    </div>
+    <!-- End class="bottom" -->
+    {% endblock bottom %}   
+</div>
+<!-- End class="header" -->    
+{% endblock header %}
+
+{% block navigation %}
+<!-- Navigation -->
+<nav class="navigation">
+    
+    <div class="container">     
+        <div class="row">
+            <div class="span9">
+                
+            <a href="#" class="main-menu-button">Navigation</a>
+            <!-- Begin Menu Container -->            
+            {% include 'partials/menu.html' %}
+
+            </div>
+
+            <div class="span3 visible-desktop">
+            </div>
+        </div>            
+    </div>
+    
+</nav>
+<!-- End class="navigation" -->
+{% endblock navigation %}
+
+
+<!-- Content section -->        
+<section class="main">
+
+{% block main %}                
+
+{% endblock main %}
+
+</section>
+<!-- End class="main" -->
+       
+{% block twitter %}             
+<!-- Twitter bar -->
+<div class="twitter-bar">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="icon">
+                    <i class="icon-twitter"></i>
+                </div>
+                <div id="tweets" data-username="pamplonacentro">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End class="twitter-bar" -->     
+{% endblock twitter %}   
+
+{% block footer %}      
+<!-- Footer -->
+<div class="footer">
+    <div class="container">
+        
+        <div class="row">                           
+            <div class="span2">
+                <!-- Support -->
+                <div class="support">
+                    {% include 'partials/mi_cuenta.html' %}                    
+                </div>
+                <!-- End class="support" -->
+
+                <hr />
+                
+            </div>
+
+            <div class="span5">
+                {% block blog %}
+                <h6>LO ÚLTIMO DE NUESTRO BLOG</h6>
+
+                <ul class="list-chevron links">
+                {% for noticia in ultimas_noticias %}
+                    <li>
+                        <a href="{{ noticia.get_absolute_url }}">{{ noticia.titulo }}</a>
+                        <small>{{ noticia.fecha }}</small>
+                    </li>
+                {% endfor %}
+                </ul>
+                {% endblock %}
+                <br />
+                {% block social %} 
+                {% include 'partials/social.html' %}
+                {% endblock %}
+            </div>
+            <div class="span1">
+                <a href="http://laexperiencia.com/EnsancheAreaComercial" title="Blogger"><img src="/static/img/apoyos/Laexperiencia.png" width="75px"></a>  
+            </div>
+            <div class="span4">             
+                {% block newsletter %}
+                <!-- Newsletter subscription -->
+                <div class="newsletter">
+                    <h6>Newsletter subscription</h6>
+
+                    <form onsubmit="$('#newsletter_subscribe').modal('show'); return false;" enctype="multipart/form-data" action="index.html" method="post">                       
+                        
+                        <div class="input-append">
+                            <input type="text" class="span3" name="email" />
+                            <button class="btn" type="submit">Go!</button>
+                        </div>                       
+
+                    </form>                             
+
+                    <p>Sign up to receive our latest news and updates direct to your inbox</p>
+                </div>
+                <!-- End class="newsletter" -->
+                {% endblock %}
+
+            </div>
+         
+        </div>
+    </div>
+</div>
+<!-- End id="footer" -->
+{% endblock footer %}
+
+{% block credits %}  
+<!-- Credits bar -->
+<div class="credits">
+    <div class="container">
+        <div class="row">
+            <div class="span8">
+                <p>&copy; 2013 <a href="http://themeforest.net/item/la-boutique-responsive-ecommerce-template/5573130?ref=Tfingi" title="La Boutique">La Boutique</a> &middot; <a href="http://themeforest.net/item/la-boutique-responsive-ecommerce-template/5573130?ref=Tfingi" title="Terms &amp; Conditions">Terms &amp; Conditions</a> &middot; <a href="http://themeforest.net/item/la-boutique-responsive-ecommerce-template/5573130?ref=Tfingi" title="Privacy policy">Privacy policy</a> &middot; All Rights Reserved. </p>
+            </div>
+            <div class="span4 text-right hidden-phone">
+                <p><a href="http://themeforest.net/item/la-boutique-responsive-ecommerce-template/5573130?ref=Tfingi" title="Responsive eCommerce template">Responsive eCommerce template by Tfingi</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End class="credits" -->   
+{% endblock credits %}
+
+{% block newsletter_modal %} 
+<!-- Newsletter modal window -->
+<div id="newsletter_subscribe" class="modal hide fade" tabindex="-1">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <div class="hgroup title">
+            <h3>Gracias por suscribirte a nuestro boletín.</h3>
+            <h5>Pronto recibirás toda la información de la Asociación y nuestras propuestas!</h5>
+        </div>
+    </div>
+
+    <div class="modal-footer">  
+        <div class="pull-left">
+            <button data-dismiss="modal" aria-hidden="true" class="btn btn-small">
+                Cerrar &nbsp; <i class="icon-ok"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<!-- End id="newsletter_subscribe" -->     
+{% endblock newsletter_modal %}     
+</div>
+{% endblock layout %}

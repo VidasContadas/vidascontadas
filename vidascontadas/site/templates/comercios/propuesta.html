@@ -1,0 +1,311 @@
+{% extends "layout.html" %}
+
+{% block main %}  
+<section class="product">
+<!-- Slider
+<section class="flexslider">
+    <ul class="slides">
+        <li>
+        {% if comercio.imagen %}
+            <img src="{{comercio.imagen.url}}" alt="{{comercio.nombre}}" />
+        {% endif %}
+        </li>
+    </ul>
+</section>
+ -->
+<!-- Product info -->
+<section class="product-info">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+            {% if comercio.imagen %}
+                <img src="{{comercio.imagen.url}}" alt="{{comercio.nombre}}" width="100%"/>
+            {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="span12">
+                <p></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span4">                
+                <div class="product-images">
+                    <div class="box">
+
+                        <div class="primary">
+                            <img src="{{propuesta.imagen.url}}" alt="{{propuesta.titulo}}">
+                        </div>                    
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="span8">
+                
+                <!-- Product content -->
+                <div class="product-content">
+                    <div class="box" id="tabs">
+
+                        <!-- Tab panels' navigation -->
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#propuesta" data-toggle="tab">
+                                    <i class="icon-gift icon-large"></i>
+                                    <span class="hidden-phone">Propuesta</span>
+                                </a>
+                            </li>  
+
+                            <li>
+                                <a href="#description" data-toggle="tab">
+                                    <i class="icon-info-sign icon-large"></i>
+                                    <span class="hidden-phone">Info</span>
+                                </a>
+                            </li>      
+                            <li>
+                                <a href="#contacto" data-toggle="tab">
+                                    <i class="icon-heart icon-large"></i>
+                                    <span class="hidden-phone">Contacto</span>
+                                </a>
+                            </li>         
+                            {% for pagina in comercio.paginas.all %}
+                            <li>
+                                <a href="#page-{{pagina.id}}" data-toggle="tab">
+                                    <i class="{{pagina.icono}} icon-large"></i>
+                                    <span class="hidden-phone">{{pagina.titulo}}</span>
+                                </a>
+                            </li> 
+                            {% endfor %}                                                
+
+                            <!--
+
+
+                            <li >
+                                <a href="#product" data-toggle="tab">
+                                    <i class="icon-reorder icon-large"></i>
+                                    <span class="hidden-phone">Product</span>
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a href="#shipping" data-toggle="tab">
+                                    <i class="icon-truck icon-large"></i>
+                                    <span class="hidden-phone">Shipping</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#returns" data-toggle="tab">
+                                    <i class="icon-undo icon-large"></i>
+                                    <span class="hidden-phone">Returns</span>
+                                </a>
+                            </li>
+                            -->
+
+
+                        </ul>
+                        <!-- End Tab panels' navigation -->
+                        
+
+                        <!-- Tab panels container -->
+                        
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="propuesta">
+                               
+                                    <h3>{{propuesta.titulo}}</h3>
+                                    <h6>{{propuesta.comercio.nombre|upper}}</h6>
+                                           
+                                    {{propuesta.presentacion|safe}}
+
+                                <!--
+                                <div class="well">
+                                    <div class="row-fluid">
+                                        <div class="span8">
+                                            <a href="/comercios/modificar/?id={{comercio.id}}" class="btn btn-primary btn-large">
+                                            <i class="icon-plus"></i> &nbsp; Modificar comercio
+                                            </a>
+                                        </div>
+                                        <div class="span4">
+
+                                        </div>
+                                    </div>
+                                </div>  
+                                -->         
+                            </div>
+                            <!-- Description tab -->
+                            <div class="tab-pane active" id="description">
+                                {{comercio.presentacion|safe}}   
+                                <!--
+                                <div class="well">
+                                    <div class="row-fluid">
+                                        <div class="span8">
+                                            <a href="/comercios/modificar/?id={{comercio.id}}" class="btn btn-primary btn-large">
+                                            <i class="icon-plus"></i> &nbsp; Modificar comercio
+                                            </a>
+                                        </div>
+                                        <div class="span4">
+
+                                        </div>
+                                    </div>
+                                </div>  
+                                -->         
+                            </div>
+                            <!-- End id="description" -->
+                                                                            
+                            <!-- Ratings tab -->
+                            <div class="tab-pane" id="contacto">
+                          
+
+                            <div class="ratings-items">
+
+                                <article class="rating-item">
+                                        <div class="row-fluid">
+                                            <div class="span9">
+                                             <div id="mapa-{{comercio.id}}" class="gm-style"></div>
+                                            </div>
+
+                                            <div class="span3 locales">
+                                                {% for local in comercio.locales.all %} 
+                                                <h6>{{local.nombre}}</h6>
+                                                {{local.direccion|safe}}
+                                                <small>{{local.telefono}}</small>
+                                                <br /><br />
+                                                <a href="/comercios/local/editar/?id={{local.id}}&comercio={{comercio.id}}" title="{{local.titulo}}"><i class="icon-edit icon-2x"></i></a>&nbsp;<!--a href=""><i class="icon-eye-close icon-2x"></i></a-->&nbsp;<a href="/comercios/local/borrar/?id={{propuesta.id}}&comercio={{comercio.id}}"><i class="icon-trash icon-2x"></i></a>
+                                                <hr>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                </article>
+                                <hr>
+
+                            </div>
+                            </div>
+                            {% for pagina in comercio.paginas.all %}
+                            <div class="tab-pane" id="page-{{pagina.id}}">
+                                <div class="row-fluid">
+                                    <div class="span8">   
+                                        {{pagina.texto|safe}}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>                                            
+                        <!-- End tab panels container -->
+                        
+                    </div>
+                    
+                </div>                                    
+                <!-- End class="product-content" -->
+                
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<!-- End class="product-info" -->
+
+<!-- Product Reviews 
+<section class="product-reviews">
+    <div class="container">
+        <div class="span8 offset2">
+            <h5>Tell us why you <span class="script">love❤</span> this product</h5>
+
+            <div id="fb-root"></div>
+            <script id="facebook-jssdk" src="//connect.facebook.net/en_GB/all.js#xfbml=1&amp;appId=460821237293986"></script><script>                            
+                (function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id))
+                        return;
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=460821237293986";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            </script>
+
+            <div class="fb-comments" data-width="730" data-href="http://la-boutique.twindots.com/product/chaser-overalls" data-num-posts="5"></div>
+            
+        </div>
+    </div>      
+</section>
+-->
+<!-- End class="product-reviews" -->
+
+<!-- Related products -->
+<section class="product-related">
+    <div class="container">
+        <div class="span12">
+
+            <h5>Más propuestas</h5>
+
+            <ul class="product-list isotope propuestas" style="position: relative; overflow: hidden; height: 542px;">
+                {% include 'partials/propuestas_ajax_full.html' %}
+            </ul>
+
+            <!--
+            <h5>Nuestras propuestas</h5>
+
+            <ul class="product-list isotope" style="position: relative; overflow: hidden; height: 542px;">
+                {% for propuesta in comercio.propuestas.all %}
+                {% if propuesta.visible %}
+                <li class="standard isotope-item" data-price="70" style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(600px, 0px, 0px);">
+                    <a href="#" title="574 In Red">
+
+                        <div class="image">
+                            {% if propuesta.imagen %}
+                            <img class="primary" src="{{propuesta.imagen.url}}" alt="">
+                            <img class="secondary" src="{{propuesta.imagen.url}}" alt="">
+                            {% endif %}
+                        </div>
+
+                        <div class="title">
+                            <div class="prices"><span class="price">70.00€</span></div>
+                            <hr>
+                            <h2>{{propuesta.comercio.nombre}}</h2>
+                            <hr>
+                            <h3>{{propuesta.titulo}}</h3>
+                            <hr>
+                            {{propuesta.presentacion|safe}}
+                        </div>
+
+                    </a>
+                </li> 
+                {% endif %}
+                {% endfor %}
+                                            
+            </ul>
+            -->
+        </div>
+    </div>  
+</section>                    
+<!-- End class="products-related" -->
+
+<!-- Added to cart modal window -->
+<div id="added" class="modal hide fade" tabindex="-1">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <div class="hgroup title">
+            <h3>You're one step closer to owning this product!</h3>
+            <h5>"Chaser Overalls" has been added to your cart</h5>
+        </div>
+    </div>
+    <div class="modal-footer">  
+        <div class="pull-right">                
+            <a href="cart.html" class="btn btn-primary btn-small">
+                Go to cart &nbsp; <i class="icon-chevron-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- End id="added" -->
+
+</section>
+
+{% endblock %}          
+
+{% block extra_javascript %}
+{% include "partials/mapa_locales_new.html" %} 
+{% endblock %}      

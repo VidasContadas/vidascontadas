@@ -1,0 +1,47 @@
+<script type="text/javascript" id="googlemaps">
+
+  var map;
+  google.maps.visualRefresh = true;     // Enable the visual refresh
+  function initialize_map() {
+
+    var mapDiv;
+    var image = '/static/img/map-marker.png';
+    var marker;    
+        
+    {% for local in comercio.locales.all %}
+    
+    {% if forloop.first %}
+
+    mapDiv = document.getElementById('mapa-{{comercio.id}}');
+    map = new google.maps.Map(mapDiv, {
+      center: new google.maps.LatLng({{local.localizacion.latitude|floatformat:".5f"}},{{local.localizacion.longitude|floatformat:".5f"}}),
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    mapDiv.map = map;
+    {% endif %}
+
+    marker = new google.maps.Marker({
+            position: new google.maps.LatLng({{local.localizacion.latitude|floatformat:".5f"}},{{local.localizacion.longitude|floatformat:".5f"}}),
+            map: map,
+            icon: image, 
+            title: '{{ local.nombre }}',
+    });
+    
+    {% endfor %}  
+
+    map.setCenter(marker.getPosition());
+    google.maps.event.trigger(map, 'resize');  
+
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize_map);
+
+  $('a[href="#contacto"]').on('shown.bs.tab', function(e) {
+            lastCenter=map.getCenter();
+            google.maps.event.trigger(map, 'resize');
+            map.setCenter(lastCenter);
+
+        });
+
+</script>

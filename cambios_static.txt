@@ -1,0 +1,13 @@
+torquoise.css
+label {
+font-size: 16px;
+margin-bottom: 10px;
+margin-top: 10px;
+}
+
+
+.redactor_box {
+max-width: 769px;
+float: left;
+width: 100%;
+}

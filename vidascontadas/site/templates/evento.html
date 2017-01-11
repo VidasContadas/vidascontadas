@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block main %}                
+
+<!-- Blog post -->
+<section class="blog_post">
+
+<div class="container">
+    <div class="row">
+
+    <div class="span9">
+
+    <article class="post post-full">
+        <div class="box">
+            <div class="box-header">
+                <img src="{{ evento.imagen.url }}" width="100%" alt="{{ evento.titulo }}" title="{{ evento.titulo }}" />
+                <h2>
+                    {{ evento.titulo }}      
+                </h2>
+                <ul class="post-meta">
+                    <li><i class="icon-user"></i> &nbsp; {{ evento.lugar }}</li>
+                    <li><i class="icon-calendar"></i> &nbsp; {{ evento.fecha_inicio }}</li>
+                </ul>
+            </div>
+
+            <div class="box-content">
+            <p class="lead">
+            {{ evento.texto |safe }}
+            </p>                   
+            </div>
+
+        </div>
+    </article>
+        
+    </div>
+
+<div class="span3">                                
+
+{% block logo_post %}
+
+{% endblock %}
+
+{% block categorias_post %}
+<div class="widget Menu">
+
+    <h3 class="widget-title widget-title ">Noticias relacionadas</h3>
+
+    <ul class='menu-widget'>
+
+        {% for cat in categorias %}
+        <li class="level1"><a href="{{cat.slug}}" title="Trends" class="title">{{cat.name}}</a></li>
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock %}
+<!-- End class="widget Menu" -->    
+                                                                        
+    </div>
+    </div>
+</div>
+</section>                
+<!-- End class="blog_post" -->
+
+{% endblock %}                

@@ -1,0 +1,24 @@
+{% for propuesta in propuestas %}
+
+<li class="standard isotope-item">
+    <a href="/comercios/{{propuesta.comercio.slug}}/{{propuesta.id}}/" title="{{propuesta.titulo}}">
+
+        <div class="image">
+            <img class="primary" src="{{propuesta.imagen.url}}" alt="{{propuesta.titulo}}">
+            <img class="secondary" src="{{propuesta.imagen.url}}" alt="{{propuesta.titulo}}">
+        </div>
+
+        <div class="title alto-70">            <!--div class="prices"><span class="price">70.00€</span></div-->
+            <h3>{{propuesta.titulo}}</h3>
+            <h6>{{propuesta.comercio.nombre|upper}}</h6>
+        </div>
+        <div class="text alto-150">
+            
+            {{propuesta.presentacion|safe|truncatewords:15}}
+
+        </div>
+
+    </a>
+</li> 
+                                     
+{% endfor %}      

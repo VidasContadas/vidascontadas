@@ -1,0 +1,25 @@
+{% extends "static_page.html" %}
+
+{% block css %}
+{{ block.super }}
+<style>
+    .wpcf7-form .redactor_box{ max-width: none; }
+</style>
+
+{% endblock %}
+{% block content %} 
+
+<form action="" class="wpcf7-form" method="POST">
+{% csrf_token %}
+{{ form.media }}
+{{ form.as_table }}
+
+<p>
+&nbsp;
+</p>
+<input id="submit" type="submit" value="Guardar" class="btn btn-primary">
+<input id="cancel" type="cancel" value="Cancelar" class="btn"  onclick="history.go(-1);">
+
+</form>
+
+{% endblock %}

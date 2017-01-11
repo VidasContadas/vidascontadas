@@ -1,0 +1,186 @@
+{% extends "layout.html" %}
+
+{% load custom_tags %}
+
+{% block main %}                
+
+<!-- Static page 1 -->
+<section class="static_page_1">
+
+{% block slider %}                  
+{% endblock %}
+
+<div class="container">
+<div class="row">
+<div class="span12">
+
+
+<section class="static-page">
+<div class="row-fluid">
+    <div class="span12">
+        {% get_banner_url banners 'convenios' as banner %}
+        <img src="{{banner}}" alt="Asóciate" />
+    </div>
+</div>
+<div class="row-fluid">
+
+<div class="span3">
+
+<!-- Static page navigation -->
+
+<ul class="nav nav-tabs nav-stacked" id="menu">
+
+   <li><a href="#" title="Ventajas" class="title">Ventajas</a></li>
+   <li><a href="#" title="Al día" class="title">Al día</a></li>
+   <li><a href="#" title="Soluciones" class="title">Soluciones</a></li>
+   <li><a href="#" title="Formación" class="title">Formación</a></li>
+   <li><a href="#" title="Social" class="title">Social</a></li>
+   <li><a href="#" title="Visibilidad" class="title">Visibilidad</a></li>
+   <li><a href="#" title="Convenios" class="title">Convenios</a></li>                                                
+</ul>
+
+<!-- End static page navigation -->                                        
+</div>
+
+<div class="span9">
+
+    <div class="content">
+
+        <h1>El mayor centro comercial y de negocios de Navarra.</h1>
+        <p class="lead">La asociación de empresas de comercio, hostelería y servicios del Ensanche lleva más de 20 años comprometida con el pequeño y mediano comercio del Ensanche, defendiendo los intereses del sector y dinamizando la zona comercial con actividades. Todo ello contribuye a que tu negocio sea más competitivo. Además, como colectivo conseguimos cuestiones que individualmente son inviables.</p>
+        <hr>
+    </div>
+    <div class="content">
+        <h1>Ventajas</h1>                                                
+        <p class="lead">Contamos con una amplia gama de productos y servicios con descuento. Sólo por ser asociado, aprovecha y minimiza los costes de tu negocio.</p>
+
+        <p>
+        <ul class="list-border">
+        <li> Monedas de zona azul.</li>
+        <li> Tickets de parking.</li>
+        <li> Limpieza de cristales.</li>
+        <li> Seguros.</li>
+        <li> Riesgos laborales.</li>
+        <li> Bolsas.</li>
+        <li> Convenio con Caja Rural.</li>
+        <li> Diseño y comunicación.</li>
+        <li> Asesoría jurídica.</li>
+        <li> Asesoría fiscal, contable, laboral.</li>
+        <li> Telefonía.</li>
+        <li> Mantenimiento informático.</li>
+        <li> Diseño de proyectos y reformas.</li>
+        <li> Envío a domicilio.</li>
+        <li> Combustible.</li>
+        <li> Rotulación.</li>
+        </ul>
+        </p>
+
+        <hr>
+    </div>
+    <div class="content">        
+        <h1>Al día</h1>
+        <p class="lead">Desde la asociación se informa puntualmente sobre la legislación comercial vigente en materia de consumo, rebajas y horarios.</p>
+
+        <p class="lead">También sobre subvenciones, ordenanzas de terrazas, etc. Estarás informado sobre posibles incidencias que afecten al desarrollo de tu actividad como cortes de luz, robos o estafas, huelgas, etc.</p>
+        <hr>
+      </div>
+    <div class="content">
+
+        <h1>Soluciones</h1>
+        <p class="lead">Podrás ofrecer a tus clientes el pago en 3 cómodos plazos a través de la "tarjeta comercio" sin abonar por ello intereses ni el cliente ni el establecimiento.
+        </p> 
+        <p class="lead">Además, te facilitamos trámites burocráticos en cuestiones que puedan afectar al desarrollo de tu negocio, gestionamos la ocupación de locales vacíos, ayudamos a emprendedores en la puesta en marcha de nuevos negocios.</p>
+        <hr>
+    </div>
+    <div class="content">        
+        <h1>Formación</h1>
+        <p class="lead">
+        Tendrás acceso a un amplio abanico de cursos formativos que te ayudarán a impulsar tu negocio:
+        </p>
+        <p>
+        <ul class="list-border">
+        <li>Nuevas tecnologías.</li>
+        <li>Escaparatismo y visual merchandising.</li>
+        <li>Rentabiliza tu comercio.</li>
+        <li>Redes sociales.</li>
+        <li>Geolocalización.</li>
+        <li>Innovación en retail.</li>
+        <li>Gestión empresarial.
+        <li>Jornada "Noche del Ensanche".</li>
+        </ul>
+        <hr>
+    </div>
+    <div class="content">        
+        <h1>Social</h1>
+        <p class="lead">
+        La Asociación respalda valores como la solidaridad, la sostenibilidad, la responsabilidad social corporativa y la concienciación ciudadana.
+        </p>   
+        <p class="lead">
+        <strong>Solidaridad</strong>, colaborando con Fundación Juan Bonal, Cáritas Navarra, Adano...
+        </p>   
+        <p class="lead">
+        <strong>Sostenibilidad</strong>, promoviendo campañas "reutiliza, reduce, recicla"...
+        </p>   
+        <p class="lead">
+        <strong>Responsabilidad Social Corporativa</strong>, porque nuestros escaparates lucen limpios gracias al trabajo de un centro especial de empleo...
+        </p>   
+        <p class="lead">
+        <strong>Concienciación ciudadana</strong>, porque recordamos a nuestro vecino que "Nosotros pagamos los impuestos en Navarra beneficiando tu comunidad".
+        </p>               
+
+        <hr>
+    </div>
+    <div class="content">
+        <h1>Visibilidad</h1>
+        <p class="lead">
+        La asociación desarrolla a lo largo del año varias actividades de calle como <a href="http://www.ensanchelanuit.com">La Nuit del Ensanche</a> o <strong>Comercio hace ciudad</strong> para dinamizar y dotar de una personalidad activa a la zona comercial, atrayendo así a gran número de ciudadanos a nuestras calles.
+        </p> 
+        <p class="lead">
+        La visibilidad del ensanche se potencia también a través de las redes sociales como Facebook, Twitter o el blog, en las que se cuenta con un gran número de seguidores y una gran participación activa.
+        </p>    
+    </div>
+    <div class="content">
+        <h1>Convenios</h1>
+        <p class="lead">
+        Asociaté y ahorra. Nuestros asociados cuentan con descuentos y ventajas para que su día a día les cueste menos.
+        </p> 
+        <p class="lead">
+        <a class="btn btn-primary" title="convenios" href="/convenios/">Ver convenios</a>
+        </p>    
+    </div>    
+
+</div>
+
+</section>
+</div>
+</div>
+</div>
+</section>    
+<!-- End Static page 1 -->       
+
+{% endblock %}
+
+{% block extra_javascript %}
+<script>
+            $('#menu a').click(function(e){
+             e.preventDefault();
+             hideContentDivs();             
+             var myIndex = $(this).parent().prevAll().length + 1;
+             
+             $('.content').eq(myIndex).show();
+             /*
+             $('#menu a').css("background-color", "#fbfbf9");
+             $('#menu a').css("color", "#797d7b");             
+             $(this).css("background-color", "#1abc9c");
+             $(this).css("color", "#fff");             
+             */
+             });
+
+            function hideContentDivs(){
+                $('.content').each(function(){
+                $(this).hide();});
+            }
+            hideContentDivs();
+            $('.content').eq(0).show();
+</script>
+{% endblock %}

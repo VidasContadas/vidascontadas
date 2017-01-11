@@ -1,0 +1,17 @@
+
+import smtplib
+smtp = smtplib.SMTP('localhost') 
+smtp.sendmail('asociados@areacomercial.com', destinatario, correo) 
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'tu.cuenta@gmail.com'
+EMAIL_HOST_PASSWORD = 'la.de.tu.cuenta'
+EMAIL_PORT = 587
+
+from django.core.mail import send_mail
+send_mail('Subject here', 'Here is the message.', 'info@areacomercial.com', ['alberto.labarga@gmail.com'], fail_silently=False)
+
+from django.core.mail import EmailMessage
+email = EmailMessage('Asunto', 'El contenido del mensaje: Ola hamijos, como mando correos en Phyton?', to = ['destinatario@sufridor.com'])
+email.send()

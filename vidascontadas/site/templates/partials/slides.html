@@ -1,0 +1,13 @@
+{% if slides %}
+<!-- Slider -->
+<section class="flexslider">
+    <ul class="slides">
+    {% for slide in slides %}
+        <li>
+            {% include 'partials/slide.html' %} 
+        </li>
+    {% endfor %}
+    </ul>
+</section>
+{% endif %}
+<!-- End class="flexslider" --> 

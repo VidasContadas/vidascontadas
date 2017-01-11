@@ -1,0 +1,14 @@
+<div class="megamenu_container">
+    <div class="menu-main-navigation-container">
+        <ul id="menu-main-navigation" class="main-menu">
+            <li><a {% if currentpage == "home" %}class='active'{% endif %} href="/">INICIO</a></li>
+            <li><a {% if currentpage == "quienessomos" %}class='active'{% endif %} href="/quienes-somos/">QUIÉNES SOMOS</a></li>   
+            <li><a {% if currentpage == "noticias" %}class='active'{% endif %} href="/noticias/">NOTICIAS</a></li>                   
+            <li><a {% if currentpage == "asociados" %}class='active'{% endif %} href="/asociados/">GUÍA DE ESTABLECIMIENTOS</a></li>
+            <li><a {% if currentpage == "agenda" %}class='active'{% endif %} href="/agenda/">AGENDA</a></li>
+            <!--li><a href="http://ensancheareacomercial.blogspot.com.es/" target="_blank">NUESTRO BLOG</a></li-->
+            <li><a {% if currentpage == "asociate" %}class='active'{% endif %} href="/asociate/">ASÓCIATE</a></li>
+            <li><a {% if currentpage == "contacto" %}class='active'{% endif %} href="/contacto/">CONTACTO</a></li>
+        </ul>
+    </div>    
+</div>    

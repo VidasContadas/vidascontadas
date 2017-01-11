@@ -1,0 +1,42 @@
+{% extends "isotope.html" %}
+{% load thumbnail %}
+{% block box_list %}
+    <div class="span9">
+    <ul class="product-list isotope">
+    {% for convenio in convenios %}
+    <li class="standard isotope-item" data-price="58" data-name="{{convenio.name}}">
+        <a href="/convenios/{{ convenio.id }}" title="{{ convenio.name }}">
+            <div class="image">
+                <img class="primary" src="{% thumbnail convenio.logo 250x250 upscale background='#fff' %}" alt="{{ convenio.name }}" />
+                <!--img class="primary" src="{{ convenio.logo.url }}" alt="{{ convenio.name }}" /-->                
+            </div>
+
+            <div class="title alto-150">
+                <h3>{{ convenio.name|upper }}</h3>
+                <h6>{{ convenio.tipo|upper }}</h6>
+            </div>
+
+        </a>
+    </li>
+    {% endfor %}
+    </ul>
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+<div class="span3">
+
+<div class="widget Menu">
+
+    <h3 class="widget-title widget-title ">Categorías</h3>
+
+    <ul class='menu-widget'>
+        {% for cat in categorias %}
+        <li class="level1"><a href="/convenios/tipo/{{cat.slug}}" title="Trends" class="title">{{cat.name}}</a></li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+</div>
+{% endblock %}

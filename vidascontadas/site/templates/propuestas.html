@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block main %}                
+
+<section class="home">
+
+{% block propuestas %} 
+
+<section class="product-related">
+    <div class="container">
+        <div class="span12">
+
+            <ul class="product-list isotope" style="position: relative; overflow: hidden; height: 542px;">
+                {% include 'partials/propuestas_ajax.html' %}
+            </ul>
+
+        </div>
+    </div>  
+</section>  
+
+     
+{% endblock %}
+
+{% block promos %} 
+    {% include 'partials/promos.html' %}  
+{% endblock %}
+
+</section>
+<!-- End class="home" -->
+
+{% endblock %}
+
+{% block extra_javascript %}
+<script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
+<script>$.endlessPaginate({
+            paginateOnScroll: true,
+            paginateOnScrollMargin: 100
+            });
+</script>
+{% endblock %}

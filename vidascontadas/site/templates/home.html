@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block main %}                
+
+<section class="home">
+
+{% block slider %} 
+{% include 'partials/slides.html' %}                   
+{% endblock %}
+
+{% block propuestas %} 
+
+<section class="product-related">
+    <div class="container">
+        <div class="span12">
+
+        <h5>Nuestras propuestas</h5>
+
+            <ul class="product-list isotope" style="position: relative; overflow: hidden; height: 542px;">
+                {% include 'partials/propuestas_ajax.html' %}
+            </ul>
+            
+        </div>
+        <center><a class="btn btn-primary" title="Agenda" href="/propuestas/">más propuestas</a></center>
+        <br/>        
+    </div>  
+</section>  
+
+     
+{% endblock %}
+
+{% block promos %} 
+    {% include 'partials/promos.html' %}  
+{% endblock %}
+
+{% block apoyos %} 
+    {% include 'partials/apoyos.html' %}  
+{% endblock %}
+
+</section>
+<!-- End class="home" -->
+
+{% endblock %}
+
+{% block extra_javascript %}
+<script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
+<script>$.endlessPaginate({
+            paginateOnScroll: true,
+            paginateOnScrollMargin: 100
+            });
+</script>
+{% endblock %}

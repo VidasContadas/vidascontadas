@@ -1,0 +1,403 @@
+{% extends "layout.html" %}
+
+{% block main %}  
+<section class="product">
+<!-- Slider 
+<section class="flexslider">
+    <ul class="slides">
+        <li>
+        {% if comercio.imagen %}
+            <img src="{{comercio.imagen.url}}" alt="{{comercio.nombre}}" />
+        {% endif %}
+        </li>
+    </ul>
+</section>
+-->
+<!-- Product info -->
+<section class="product-info">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+            {% if comercio.imagen %}
+                <img src="{{comercio.imagen.url}}" alt="{{comercio.nombre}}" width="100%"/>
+            {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="span12">
+                <p></p>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="span4">
+                <div class="product-images">
+                    <div class="box">
+
+                    {% for foto in comercio.fotos.all %}
+
+                        {% if forloop.first %}
+                            <div class="primary">
+                            {% if foto.imagen %}
+                                <img src="{{foto.imagen.url}}" alt="{{foto.nombre}}">
+                            {% endif %} 
+                            </div>
+                        {% endif %}
+
+                    {% endfor %}
+
+                        <div class="thumbs" id="gallery">
+                            <ul class="thumbs-list">
+                                {% for foto in comercio.fotos.all %}
+                                {% if foto.imagen %}
+                                <li>
+                                    <a class="" href="#" data-image="{{foto.imagen.url}}">
+                                        <img src="{{foto.imagen.url}}" alt="{{foto.nombre}}">
+                                    </a>
+                                </li>       
+                                {% endif %}                        
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <!--div>
+                        <p><a href="/comercios/imagen/editar/?comercio={{comercio.id}}">
+                            <button class="btn btn-primary btn-large">
+                                <i class="icon-plus"></i> &nbsp; Añadir imagen
+                            </button></a>
+                        </p>
+                        </div-->
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="span8">
+                
+                <!-- Product content -->
+                <div class="product-content">
+                    <div class="box" id="tabs">
+
+                        <!-- Tab panels' navigation -->
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#description" data-toggle="tab">
+                                    <i class="icon-info-sign icon-large"></i>
+                                    <span class="hidden-phone">Info</span>
+                                </a>
+                            </li>      
+                            <li>
+                                <a href="#contacto" data-toggle="tab">
+                                    <i class="icon-heart icon-large"></i>
+                                    <span class="hidden-phone">Contacto</span>
+                                </a>
+                            </li>         
+                            {% for pagina in comercio.paginas.all %}
+                            <li>
+                                <a href="#page-{{pagina.id}}" data-toggle="tab">
+                                    <i class="{{pagina.icono}} icon-large"></i>
+                                    <span class="hidden-phone">{{pagina.titulo}}</span>
+                                </a>
+                            </li> 
+                            {% endfor %}                                                
+                            <li>
+                                <a href="#nueva-pagina" data-toggle="tab">
+                                    <i class="icon-plus icon-large"></i>
+                                    <span class="hidden-phone">Nueva página</span>
+                                </a>
+                            </li> 
+
+                            <!--
+
+
+                            <li >
+                                <a href="#product" data-toggle="tab">
+                                    <i class="icon-reorder icon-large"></i>
+                                    <span class="hidden-phone">Product</span>
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a href="#shipping" data-toggle="tab">
+                                    <i class="icon-truck icon-large"></i>
+                                    <span class="hidden-phone">Shipping</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#returns" data-toggle="tab">
+                                    <i class="icon-undo icon-large"></i>
+                                    <span class="hidden-phone">Returns</span>
+                                </a>
+                            </li>
+                            -->
+
+
+                        </ul>
+                        <!-- End Tab panels' navigation -->
+                        
+
+                        <!-- Tab panels container -->
+                        
+                        <div class="tab-content">
+                            <!-- Description tab -->
+                            <div class="tab-pane active" id="description">
+                                {{comercio.presentacion|safe}}   
+
+                                <div class="well">
+                                    <div class="row-fluid">
+                                        <div class="span8">
+                                            <a href="/comercios/modificar/?id={{comercio.id}}" class="btn btn-primary btn-large">
+                                            <i class="icon-plus"></i> &nbsp; Modificar comercio
+                                            </a>
+                                        </div>
+                                        <div class="span4">
+
+                                        </div>
+                                    </div>
+                                </div>           
+                            </div>
+                            <!-- End id="description" -->
+                                                                            
+                            <!-- Ratings tab -->
+                            <div class="tab-pane" id="contacto">
+                                <div class="ratings-items">
+
+                                <article class="rating-item">
+                                        <div class="row-fluid">
+                                            <div class="span9">
+                                             <div id="mapa-{{comercio.id}}" class="gm-style"></div>
+                                            </div>
+
+                                            <div class="span3 locales">
+                                                {% for local in comercio.locales.all %} 
+                                                <h6>{{local.nombre}}</h6>
+                                                {{local.direccion|safe}}
+                                                <small>{{local.telefono}}</small>
+                                                <br /><br />
+                                                <a href="/comercios/local/editar/?id={{local.id}}&comercio={{comercio.id}}" title="{{local.titulo}}"><i class="icon-edit icon-2x"></i></a>&nbsp;<!--a href=""><i class="icon-eye-close icon-2x"></i></a-->&nbsp;<a href="/comercios/local/borrar/?id={{propuesta.id}}&comercio={{comercio.id}}"><i class="icon-trash icon-2x"></i></a>
+                                                <hr>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                </article>
+                                <hr>
+
+                                </div>
+
+
+                                <div class="well">
+                                    <div class="row-fluid">
+                                        <div class="span8">
+                                            <a href="/comercios/local/editar/?comercio={{comercio.id}}" class="btn btn-primary btn-large">
+                                            <i class="icon-plus"></i> &nbsp; Añadir local
+                                            </a>
+                                            
+                                        </div>
+                                        <div class="span4">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% for pagina in comercio.paginas.all %}
+                            <div class="tab-pane" id="page-{{pagina.id}}">
+                                <div class="row-fluid">
+                                    <div class="span8">   
+                                        {{pagina.texto|safe}}
+                                    </div>
+                                </div>
+
+                                <div class="well">
+                                    <div class="row-fluid">
+                                        <div class="span8">
+                <a class="btn btn-small" href="/comercios/pagina/borrar/?id={{pagina.id}}" title="Eliminar {{pagina.titulo}}">
+                    Borrar &nbsp; <i class="icon-remove"></i>
+                </a>
+                <a class="btn btn-small" href="/comercios/pagina/editar/?id={{pagina.id}}" title="Editar {{pagina.titulo}}">
+                    Editar &nbsp; <i class="icon-edit"></i>
+                </a>
+                                        </div>
+                                        <div class="span4">
+
+                                        </div>
+                                    </div>
+                                </div>     
+
+                            </div>
+                            {% endfor %}
+                            <!-- End id="ratings" -->
+                            <div class="tab-pane" id="nueva-pagina">
+                                  
+
+                                <div class="well">
+                                    <div class="row-fluid">
+                                        <div class="span8">
+                                            <a href="/comercios/pagina/editar/?comercio={{comercio.id}}" class="btn btn-primary btn-large">
+                                            <i class="icon-plus"></i> &nbsp; Crear página
+                                            </a>
+                                        </div>
+                                        <div class="span4">
+
+                                        </div>
+                                    </div>
+                                </div>           
+                            </div>
+
+
+                        </div>                                            
+                        <!-- End tab panels container -->
+                        
+                    </div>
+                    
+                </div>                                    
+                <!-- End class="product-content" -->
+                
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<!-- End class="product-info" -->
+
+<!-- Product Reviews 
+<section class="product-reviews">
+    <div class="container">
+        <div class="span8 offset2">
+            <h5>Tell us why you <span class="script">love❤</span> this product</h5>
+
+            <div id="fb-root"></div>
+            <script id="facebook-jssdk" src="//connect.facebook.net/en_GB/all.js#xfbml=1&amp;appId=460821237293986"></script><script>                            
+                (function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id))
+                        return;
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=460821237293986";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            </script>
+
+            <div class="fb-comments" data-width="730" data-href="http://la-boutique.twindots.com/product/chaser-overalls" data-num-posts="5"></div>
+            
+        </div>
+    </div>      
+</section>
+-->
+<!-- End class="product-reviews" -->
+
+<!-- Related products -->
+<section class="product-related">
+    <div class="container">
+        <div class="span12">
+
+            <h5>Imágenes</h5>
+
+            <ul class="product-list isotope" style="position: relative; overflow: hidden; height: 542px;">
+                {% for foto in comercio.fotos.all %}
+                {% if foto.imagen %}
+                <li class="standard isotope-item">
+                    
+
+                        <div class="image">
+                            <img class="primary" src="{{foto.imagen.url}}" alt="">
+                        </div>
+
+                        <div class="title">
+                            <!--div class="prices"><span class="price">70.00€</span></div-->
+                            <h3>{{foto.imagen.nombre}}</h3>
+                            <div class="icons"><a href="/comercios/imagen/editar/?id={{foto.id}}&comercio={{comercio.id}}" title="{{propuesta.titulo}}"><i class="icon-edit icon-2x"></i></a>&nbsp;<!--a href=""><i class="icon-eye-close icon-2x"></i></a-->&nbsp;<a href="/comercios/imagen/borrar/?id={{foto.id}}&comercio={{comercio.id}}"><i class="icon-trash icon-2x"></i></a></div>
+                        </div>
+
+                </li> 
+                {% endif %}
+                {% endfor %}
+
+                <li class="standard isotope-item" >
+
+                        <div class="image">
+                                <a href="/comercios/imagen/editar/?comercio={{comercio.id}}" class="btn btn-primary btn-large" style="padding-top:100px;padding-bottom:100px;">
+                                            <i class="icon-plus"></i> &nbsp; Añadir imagen
+                                </a>
+                        </div>
+
+
+                </li>                                   
+            </ul>
+        </div>
+    </div>  
+</section> 
+
+<!-- Related products -->
+<section class="product-related">
+    <div class="container">
+        <div class="span12">
+
+            <h5>Nuestras propuestas</h5>
+
+            <ul class="product-list isotope" style="position: relative; overflow: hidden; height: 542px;">
+                {% for propuesta in comercio.propuestas.all %}
+                <li class="standard isotope-item">
+                    
+
+                        <div class="image">
+                            {% if propuesta.imagen %}
+                            <img class="primary" src="{{propuesta.imagen.url}}" alt="">
+                            {% endif %}
+                        </div>
+
+                        <div class="title">
+                            <!--div class="prices"><span class="price">70.00€</span></div-->
+                            <h2>{{propuesta.comercio.nombre}}</h2>
+                            <h3>{{propuesta.titulo}}</h3>
+                            {{propuesta.presentacion|safe}}
+                            <div class="icons"><a href="/comercios/propuesta/editar/?id={{propuesta.id}}&comercio={{comercio.id}}" title="{{propuesta.titulo}}"><i class="icon-edit icon-2x"></i></a>&nbsp;<!--a href=""><i class="icon-eye-close icon-2x"></i></a-->&nbsp;<a href="/comercios/propuesta/borrar/?id={{propuesta.id}}&comercio={{comercio.id}}"><i class="icon-trash icon-2x"></i></a></div>
+                        </div>
+
+                </li> 
+                {% endfor %}
+                <li class="standard isotope-item">
+
+                        <div class="image">
+                                <a href="/comercios/propuesta/editar/?comercio={{comercio.id}}" class="btn btn-primary btn-large" style="padding-top:100px;padding-bottom:100px;">
+                                            <i class="icon-plus"></i> &nbsp; Añadir propuesta
+                                </a>
+                        </div>
+
+
+                </li>                                   
+            </ul>
+        </div>
+    </div>  
+</section>                    
+<!-- End class="products-related" -->
+
+<!-- Added to cart modal window -->
+<div id="added" class="modal hide fade" tabindex="-1">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <div class="hgroup title">
+            <h3>You're one step closer to owning this product!</h3>
+            <h5>"Chaser Overalls" has been added to your cart</h5>
+        </div>
+    </div>
+    <div class="modal-footer">  
+        <div class="pull-right">                
+            <a href="cart.html" class="btn btn-primary btn-small">
+                Go to cart &nbsp; <i class="icon-chevron-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- End id="added" -->
+
+</section>
+
+{% endblock %}                
+
+{% block extra_javascript %}
+{% include "partials/mapa_locales.html" %} 
+{% endblock %}      

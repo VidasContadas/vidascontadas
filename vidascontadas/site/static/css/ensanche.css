@@ -1,0 +1,78 @@
+.banner {  
+  -webkit-background-size: 100% auto;;
+  -moz-background-size: 100% auto;;
+  -o-background-size: 100% auto;;
+  background-size: 100% auto;;
+  height: 350px;
+  }
+
+select[multiple], select[size] {
+height: auto;
+width: 600px;
+}
+
+
+.gm-style {
+    height: 400px;
+  }
+
+.gm-style img, object, embed { max-width: none; }
+
+.gm-style label {
+    width: auto; display:inline;
+  }
+
+.alto-30{
+  height: 30px;
+}
+
+.alto-50{
+  height: 50px;
+}
+
+.alto-60{
+  height: 60px;
+}
+
+.alto-70{
+  height: 70px;
+}
+
+.alto-80{
+  height: 80px;
+}
+
+.alto-100{
+  height: 100px;
+}
+
+.alto-150{
+  height: 150px;
+}
+
+.alto-180{
+  height: 180px;
+}
+
+/*
+.propuestas li {
+  width: 45%;
+  margin-left: 5%;
+}
+*/
+
+.product-list .isotope-item .text a {
+ all: initial;
+}
+
+.isotope-item .text {
+  position: relative;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  z-index: 20;
+  -webkit-box-shadow: 0 1px 2px rgba(71, 73, 72, 0.19999999999999996);
+  -moz-box-shadow: 0 1px 2px rgba(71, 73, 72, 0.19999999999999996);
+  box-shadow: 0 1px 2px rgba(71, 73, 72, 0.19999999999999996);
+  /*color: @arguments;*/
+}

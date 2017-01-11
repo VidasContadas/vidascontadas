@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block extrahead %}
+
+{% endblock %}
+
+
+{% block main %}                
+
+<!-- Static page 1 -->
+<section class="static-page">
+<div class="container">
+<div class="row">
+<div class="span12">
+<iframe src="//player.vimeo.com/video/90516972" width="100%" height="800px" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
+</div>
+<div class="span12">
+<p class="lead"><br/></p>
+<h1>Quiénes somos</h1>
+<p class="lead">
+Cada vez todos somos más conscientes de que la unión hace la fuerza y valoramos todo lo que nos ofrece estar en el centro de Pamplona, deseamos poner en valor el paseo, el ocio, el encuentro, la experiencia de "ir de compras"... tenemos el poder que nos brinda la ciudad y por ello, no podemos ni debemos permitir que los centros comerciales de la periferia, con poquísimos establecimientos, sean la alternativa a los más de 800 establecimientos que conforman el área comercial del Ensanche. </p>
+<p class="lead">
+Para ello debemos unirnos todos, hacer realidad el sentimiento de asociacionismo, debemos tener el apoyo de las grandes locomotoras comerciales, que también deben luchar por nuestra zona, porque también es la suya; debemos avanzar JUNTOS en la misma línea, necesitamos un soplo de aire fresco para poder mantener abiertas nuestras empresas, para seguir manteniendo los puestos de trabajo de muchas personas, de muchas familias que han puesto todos sus esfuerzos en sacar adelante un negocio y si luchamos juntos, conseguiremos mucho antes nuestros objetivos: trabajo, buena atención y servicio al público y revitalización de la ciudad llenando todos y cada uno de los locales vacíos.</p>
+</div>
+
+
+</div>
+
+<div class="row">
+
+<div class="span4">
+
+    <a href="#"><img src="/static/img/PIES4.png" /></a>
+    <p class="lead"></p>
+    <div class="overlay"> 
+        <h3>Premio AGECU 2012</h3> 
+        <p>La Asociación de Comerciantes del Ensanche de Pamplona premiada por sus iniciativas para favorecer el comercio de cercanía.</p>     
+    <a class="zoom" href="http://nueva.areacomercial.com/noticias/premio-agecu-2012/" rel="" title=""></a>    </div> 
+
+</div>
+
+<div class="span4">
+    <div class="overlay">
+    <a href="#"><img src="/static/img/PIES2.png" /></a>
+    <p class="lead"></p>
+    </div>
+    <div class="overlay">     
+    <h3>La Nuit 2013</h3> <p>Un año más, Ensanche Área Comercial junto a Ayuntamiento de Pamplona y la colaboración de Reyno Gourmet y la revista ON, celebra el viernes 4 de octubre (de 20 a 23 horas) Ensanche La Nuit.</p>     
+    <a class="zoom" href="http://nueva.areacomercial.com/noticias/la-nuit-2013/" rel="" title=""></a>    </div>  
+</div>
+
+<div class="span4 last">
+
+    <a href="#"><img src="/static/img/PIES3.png" /></a>
+    <p class="lead"></p>   
+    <div class="overlay">
+    <h3>El Centro de tu vida</h3>
+    <p>Cada vez todos somos más conscientes de que la unión hace la fuerza y valoramos todo lo que nos ofrece estar en el centro de Pamplona...</p>     
+    <a class="zoom" href="http://vimeo.com/53156420" rel="" title=""></a>    </div> 
+
+</div>
+
+</div>
+</div>
+</section>    
+
+{% endblock %}
+
+{% block extra_javascript %}
+<script type="text/javascript"> 
+$('ul.img-thumbs li').hover( /*Default syntax in jquery library: hover( handlerIn(eventObject), handlerOut(eventObject) )*/
+function(){$(".overlay", this).stop().animate({top:'0px'}, {queue:false,duration:300});}, 
+function(){$(".overlay", this).stop().animate({top:'278px'},{queue:false,duration:300});}
+                     );  
+ </script>
+{% endblock %}

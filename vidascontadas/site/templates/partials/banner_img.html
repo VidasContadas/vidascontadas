@@ -1,0 +1,7 @@
+{% if categoria and not categoria.parent %}
+<img src="/media/categorias/{{ categoria.slug }}.jpg" width="100%">
+{% elif categoria.parent%}
+<img src="/media/categorias/{{ categoria.parent.slug }}.jpg" width="100%">
+{% else %}
+<img src="/media/categorias/principal.jpg" width="100%">
+{% endif %}

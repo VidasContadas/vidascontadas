@@ -1,0 +1,29 @@
+{% load thumbnail %}
+<div class="timelineLoader">
+    <img src="/static/images/timeline/loadingAnimation.gif" />
+</div>              
+
+<!-- BEGIN TIMELINE -->
+<div class="timelineFlat timelineFlatBlog tl2">
+{% for evento in lista_eventos %}
+
+        {% thumbnail evento.imagen 400x200 crop="smart" as thumb %}
+        <div class="item" data-id="{{ evento.fecha_inicio|date:'SHORT_DATE_FORMAT' }}" data-description="{{ evento.titulo }}">
+            <img src="{{ thumb.url }}" alt="{{ evento.titulo }}"/>
+            <div class="post_date">{{ evento.fecha_inicio|date:"d" }}<span>{{ evento.fecha_inicio|date:"M" }}</span> </div>
+            <h2>{{ evento.titulo }}</h2>
+            <span>{{ evento.pretty_date }}</span>
+            <div class="read_more" data-id="{{ evento.fecha_inicio|date:'SHORT_DATE_FORMAT' }}">Más info</div>
+        </div>
+        <div class="item_open" data-id="{{ evento.fecha_inicio|date:'SHORT_DATE_FORMAT' }}">
+            <div class="item_open_content">
+                <div class="timeline_open_content">
+                    <h2 class="no-marg-top">{{ evento.titulo }}</h2>
+                    <p class="no-marg-top">{{ evento.texto |safe }}</p>
+                </div>
+            </div>
+        </div>
+
+{% endfor %}  
+
+</div> <!-- /END TIMELINE -->

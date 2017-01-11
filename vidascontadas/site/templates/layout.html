@@ -1,0 +1,56 @@
+{% extends "layout-boutique.html" %}
+
+{% block topbar %}
+{% endblock topbar %}
+
+{% block twitter %}  
+{% endblock twitter %}
+
+{% block credits %}  
+{% endblock credits %}
+
+{% block newsletter %} 
+<!-- Newsletter subscription -->
+<div class="newsletter">
+    <h6>Suscríbete a nuestra newsletter</h6>
+    <p>Recibe toda la información del Ensanche en tu correo</p>
+    <!--form onsubmit="$('#newsletter_subscribe').modal('show'); return false;" enctype="multipart/form-data" action="index.html" method="post"-->                       
+    <form action="http://areacomercial.us3.list-manage.com/subscribe/post?u=05b9e18dfaff6f867945ace6d&amp;id=144540da64" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+        <!--div class="input-append">
+            <input type="text" class="span3" name="email" />
+            <button class="btn" type="submit">Enviar!</button>
+        </div-->                       
+
+<div class="mc-field-group">
+    <label for="mce-EMAIL">Correo electrónico  <span class="asterisk">*</span>
+</label>
+    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+</div>
+<div class="mc-field-group">
+    <label for="mce-FNAME">Nombre  <span class="asterisk">*</span>
+</label>
+    <input type="text" value="" name="FNAME" class="required" id="mce-FNAME">
+</div>
+<div class="mc-field-group">
+    <label for="mce-LNAME">Apellidos  <span class="asterisk">*</span>
+</label>
+    <input type="text" value="" name="LNAME" class="required" id="mce-LNAME">
+</div>
+    <div id="mce-responses" class="clear">
+        <div class="response" id="mce-error-response" style="display:none"></div>
+        <div class="response" id="mce-success-response" style="display:none"></div>
+    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;"><input type="text" name="b_05b9e18dfaff6f867945ace6d_144540da64" value=""></div>
+    <div class="clear">
+    <input type="submit" value="Enviar" name="subscribe" id="mc-embedded-subscribe" class="btn">
+    <!--button class="btn" type="submit">Enviar!</button-->
+    </div>
+    </form>                             
+
+<div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+    
+    
+</div>
+<!-- End class="newsletter" -->
+{% endblock newsletter %}                 

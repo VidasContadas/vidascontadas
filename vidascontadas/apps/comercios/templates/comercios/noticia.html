@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{%load staticfiles thumbnail%}
+
+{%block content %}
+		<div class="container_12" id="news">
+
+			<div class="grid_6 main">			
+				<a href="{{noticia.get_absolute_url}}"><img src="{% thumbnail noticia.imagen 460x460 crop %}" alt="{{noticia}}"/></a>
+
+				<span class="date">{{noticia.fecha|date}}</span>
+
+				<h1>{{noticia}}</h1>
+
+				<p>{{noticia.texto|safe}}</p>
+			</div>
+
+			{% if otras%}
+			<div class="grid_3 other">			
+
+				<h2>OTRAS NOTICIAS</h2>
+
+				{% for n in otras%}
+				<p><span class="date">{{n.fecha|date}}</span><a href="{{n.get_absolute_url}}">{{n}}</a>{{n.resumen}}</p>
+				{%endfor%}
+			</div>
+			{%endif%}
+
+		</div>
+
+		<div class="clear grid_12"></div>
+{%endblock%}

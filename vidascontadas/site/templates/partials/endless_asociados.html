@@ -1,0 +1,20 @@
+{% load el_pagination_tags %}
+{% paginate asociados %}
+{% for asociado in asociados %}
+<div>
+
+        {% if asociado.microsite.count %}
+            <h4><a href="/comercios/{{asociado.microsite.all.0.slug}}">{{asociado.nombre}}</a></h4> 
+        {% else %}
+           <h4>{{asociado.nombre}}</h4>   
+        {% endif%}
+        <h6><em class="icon-map-marker"></em>&nbsp; {{asociado.direccion}}</h6>
+        <h6>
+            {% for cat in asociado.categorias.all %}
+            <small><em class="icon-tag"></em> &nbsp; {{cat.name|lower}} </small>
+            {% endfor %}
+        </h6>
+        <hr />
+</div>
+{% endfor %}
+{% show_more %}

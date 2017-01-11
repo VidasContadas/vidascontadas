@@ -1,0 +1,200 @@
+{% extends "layout.html" %}
+
+{% block extrahead %}
+
+    <!-- bxSlider CSS file -->
+        <link href="assets/css/jquery.bxslider.css" rel="stylesheet" />
+        
+    <!-- Stylesheets -->
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" media="all" />
+        <link href="assets/css/normalize.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="assets/css/litebox.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="assets/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+
+{% endblock %}
+
+{% block main %}                
+
+<!-- Blog post -->
+<section class="blog_post">
+
+<div class="container">
+    <div class="row">
+
+    <div class="span9">
+
+    <article class="post post-full">
+        <div class="box">
+            <div class="box-header">
+                <img src="{{ noticia.imagen.url }}" width="100%" alt="{{ noticia.titulo }}" title="{{ noticia.titulo }}" />
+                <h2>
+                    {{ noticia.titulo }}      
+                </h2>
+                <ul class="post-meta">
+                    <li><i class="icon-user"></i> &nbsp; {{ noticia.autor }}</li>
+                    <li><i class="icon-calendar"></i> &nbsp; {{ noticia.fecha }}</li>
+                </ul>
+            </div>
+
+            <div class="box-content">
+                <ul class="bxslider">
+                    <li><a href="static/assets/imgs/005.jpg" target="_self" class="litebox" data-litebox-group="group-1"><img src="static/assets/imgs/001-thumb.jpg" class="inline-block"/></a></li>
+                    <li></li>
+                    <li><a href="static/assets/imgs/006.jpg" target="_self" class="litebox" data-litebox-group="group-1"><img src="static/assets/imgs/001-thumb.jpg"  class="inline-block"/></a></li>
+                    <li><a href="static/assets/imgs/007.jpg" target="_self" class="litebox" data-litebox-group="group-1"><img src="static/assets/imgs/001-thumb.jpg"  class="inline-block"/></a></li>
+                    <li><a href="assets/imgs/008.jpg" target="_self" class="litebox" data-litebox-group="group-1"><img src="static/assets/imgs/001-thumb.jpg"  class="inline-block"/></a></li>
+                    <li><a href="assets/imgs/005.jpg" target="_self" class="litebox" data-litebox-group="group-1"><img src="static/assets/imgs/001-thumb.jpg"  class="inline-block"/></a></li>
+                </ul>
+            </div>
+
+            <div class="box-content">
+            <p class="lead">
+            {{ noticia.resumen |safe }}
+            </p>  
+            <hr class="small">  
+            <p>
+            {{ noticia.texto |safe }}
+            </p>                      
+            </div>
+
+        </div>
+    </article>
+    <!--                         
+    <section class="post-comment-form">
+        <div class="box">
+            <div class="box-header">
+            <h3>Participa</h3>
+            <h5>
+            Ayúdanos a construir un Ensanche mejor para todos.                                  
+            </h5>        
+            </div>
+
+                                        <div id="post-comment">
+                                            <form enctype="multipart/form-data" action="#" method="post">
+
+                                                <div class="row-fluid">
+                                                    <div class="span4">
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="author_name">Nombre</label>
+                                                            <div class="controls">
+                                                                <input type="text" class="span12" id="author_name" name="author_name">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="span4">
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="author_email">Correo electrónico</label>
+                                                            <div class="controls">
+                                                                <input type="text" class="span12" id="author_email" name="author_email">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="span4">
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="author_url">Website</label>
+                                                            <div class="controls">
+                                                                <input type="text" class="span12" id="author_url" name="author_url">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row-fluid">
+                                                    <div class="span12">
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="content">Comment</label>
+                                                            <div class="controls">
+                                                                <textarea class="span12" id="content" name="content" id="content"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row-fluid">
+                                                    <div class="span12">
+                                                        <label for="subscribe_to_notifications" class="checkbox">
+                                                            <input type="checkbox" value="1" name="subscribe_to_notifications" id="subscribe_to_notifications"/>
+                                                            Notify me if someone else comments on this post
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="box-footer">
+                                                    <button class="btn btn-primary btn-small" type="submit" onclick="">Comment &nbsp; <i class="icon-comment-alt"></i></button>
+                                                </div>
+                                            </form>                 
+                                        </div>
+        </div>
+    </section>
+    -->
+    
+    </div>
+
+<div class="span3">                                
+
+{% block logo_post %}
+
+{% endblock %}
+
+{% block categorias_post %}
+<div class="widget TopSellingProducts">
+    <h3 class="widget-title widget-title ">Últimas noticias</h3>
+    <ul class="product-list-small">
+
+    {% for noticia_rel in ultimas_noticias %}
+
+        <li>            
+            <div class="image">
+                <a href="{{ noticia_rel.get_absolute_url }}" title="{{ noticia_rel.titulo }}">
+                    <img src="{{ noticia_rel.imagen.url }}" alt="{{ noticia_rel.titulo }}" width="200px">
+                </a>
+            </div>
+
+            <div class="desc">
+                <h6>
+                    <a href="{{ noticia_rel.get_absolute_url }}" title="El Silencio">{{ noticia_rel.titulo }}</a>
+                </h6>
+
+                <div class="price">
+                    {{ noticia_rel.fecha }}                                      
+                </div>
+
+            </div>
+        </li>
+    {% endfor %}
+       
+    </ul>
+</div>
+{% endblock %}
+<!-- End class="widget Menu" -->    
+                                                                        
+    </div>
+    </div>
+</div>
+</section>                
+<!-- End class="blog_post" -->
+
+{% endblock %}                
+
+
+{% block extra_javascript %}
+
+<script src="static/assets/js/smoothscroll.js" type="text/javascript"></script>
+<script src="static/assets/js/images-loaded.min.js" type="text/javascript"></script>
+<script src="static/assets/js/litebox.js" type="text/javascript"></script>
+<script src="static/assets/js/backbone.js" type="text/javascript"></script>
+<script src="static/assets/js/jquery.bxslider.js"></script>
+<script type="text/javascript">
+    $('.litebox').liteBox();
+    $('.bxslider').bxSlider({
+                      minSlides: 4,
+                      maxSlides: 5,
+                      slideWidth: 170,
+                      slideMargin: 10
+                    });
+</script>
+
+{% endblock %}   
