@@ -1,3 +1,0 @@
-{% for p in pages%}
-http://{{site}}{{p.get_absolute_url}} lastmod={{p.updated|date:"cO"}} changefreq=never priority=0.5
-{%endfor%}

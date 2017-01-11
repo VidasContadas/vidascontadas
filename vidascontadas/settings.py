@@ -22,7 +22,7 @@ PROJECT_ROOT = os.path.join(BASE_DIR,"vidascontadas")
 SITE_ROOT           = os.path.join(PROJECT_ROOT, 'site')
 APPS_ROOT        = os.path.join(PROJECT_ROOT, 'apps')
 SITEPACKAGES_ROOT   = get_python_lib()
-
+SITE_ID = 1
 DEFAULT_CHARSET = 'utf-8'
 
 sys.path.insert(0, PROJECT_ROOT)
@@ -50,7 +50,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     #
+    'cms',
+    'menus',
+    'hvad',
+    'treebeard',
     'datetimewidget',
     'adminsortable',
     'cicu',    
@@ -64,10 +69,12 @@ INSTALLED_APPS = [
     'el_pagination', 
     'geoposition', 
     'watson',
+    'django_extensions',
     #
     'asociacion',
     'comercios',
     'victimas',
+    'document_library',
 ]
 
 
