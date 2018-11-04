@@ -1,2 +1,2 @@
 # vidascontadas
-Aplicación web
+Aplicación Django for the web http://memorizate.org
